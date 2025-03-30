@@ -1,7 +1,7 @@
 # Trabajo Práctico N°01
 
-Fecha de Inicio: 26/03/2025 23:30:00
-Fecha de Fin: 09/04/2025 18:30:00
+- Fecha de Inicio: 26/03/2025 23:30:00
+- Fecha de Fin: 09/04/2025 18:30:00
 
 Contenidos que se repasarán:
 
@@ -33,7 +33,6 @@ Ejercicio:
     - Pierde Vida si choca con cosas. (por ejemplo al chocar 3 veces que muera o que
     dependa de la velocidad del choque).
     - Daña a los enemigos hasta matarlos.
-- Un Spawner de enemigos.
+- Que spawneen diferentes tipos de enemigos- Un Spawner de enemigos.
   - Que estos enemigos aparezcan y se muevan en alguna dirección.
   - Que puedan ser dañados y destruidos.
-  - Que spawneen diferentes tipos de enemigos
