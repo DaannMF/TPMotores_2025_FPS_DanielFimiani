@@ -17,16 +17,16 @@ suma de él mismo y éste.
 
 Ejercicio:
 
-- Descargar Unity Hub y la versión de Unity: [2022.3.15f1](https://unity.com/es/releases/editor/archive)
-- Crear un proyecto 3D.
+- ✅ Descargar Unity Hub y la versión de Unity: [2022.3.15f1](https://unity.com/es/releases/editor/archive)
+- ✅ Crear un proyecto 3D.
 - Crear un jugador que actúe como un Drone de la siguiente manera:
-  - Moverse con WASD hacia los costados teniendo de referencia el forward del jugador.
-  - Con Ctrl va hacia abajo y con Espacio, hacia arriba.
+  - ✅ Moverse con WASD hacia los costados teniendo de referencia el forward del jugador.
+  - ✅ Con Ctrl va hacia abajo y con Espacio, hacia arriba.
     - No frena su impulso a menos que nos movamos en sentido opuesto (Sin rozamiento
     con el aire).
     - (Edit: El movimiento puede ser Local o Global, elección propia y lo que sientan más
     fluido)
-  - Que rote con el mouse. (Puede dar fuerza Torque o que se comporte como un shooter).
+  - ✅ Que rote con el mouse. (Puede dar fuerza Torque o que se comporte como un shooter).
   - Que posea una mira, láser o lo que sienta conveniente para ayudar al jugador a apuntar y
     pueda disparar con el click y calcular el punto de impacto con RayCast.
   - El jugador debe tener Vida y Daño.

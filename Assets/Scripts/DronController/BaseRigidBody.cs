@@ -15,7 +15,6 @@ public class BaseRigidBody : MonoBehaviour {
             rb.mass = weightInLbs * LBS_TO_KG;
             // Set the drag and angular drag to zero for homework specifications
             rb.drag = 0.0f;
-            rb.angularDrag = 0.00f;
         }
     }
 
