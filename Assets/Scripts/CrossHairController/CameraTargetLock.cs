@@ -1,10 +1,6 @@
 using UnityEngine;
 
 public class CameraTargetLock : MonoBehaviour {
-
-    [Header("Camera Angle")]
-    [SerializeField] private float cameraRotationX = 20f;
-
     Quaternion fixedRotation;
 
     // Start is called before the first frame update
@@ -13,11 +9,12 @@ public class CameraTargetLock : MonoBehaviour {
     }
 
     void Update() {
-        float parentRotationY = transform.parent.eulerAngles.y;
-        fixedRotation = Quaternion.Euler(cameraRotationX, parentRotationY, fixedRotation.z);
+        Vector3 parentRotation = transform.parent.eulerAngles;
+        fixedRotation = Quaternion.Euler(parentRotation.y, parentRotation.y, fixedRotation.z);
     }
 
-    private void LateUpdate() {
+    void LastUpdate() {
+        // Ensure the rotation is fixed at the end of the frame
         transform.rotation = fixedRotation;
     }
 }

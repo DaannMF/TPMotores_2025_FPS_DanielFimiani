@@ -26,8 +26,26 @@
                 {
                     "name": "Pedals",
                     "type": "PassThrough",
-                    "id": "8a0d6e07-7888-43a7-ae0d-a023de48def5",
+                    "id": "3498b15d-811a-4aa4-a730-cb0fba40473f",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Aim",
+                    "type": "Button",
+                    "id": "5558a240-1c13-4e8d-bfc2-1b7e9665796a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "bfe86b9e-71c6-4ffa-a89b-58ed7210004c",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -124,7 +142,29 @@
                 },
                 {
                     "name": "",
-                    "id": "907b22e0-ad7a-464f-8da7-fb5e43e0218a",
+                    "id": "9e720ef8-39f7-4e59-9792-fb433561be88",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dfe181f1-d2af-4c44-a780-94de67248c09",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3c6d39f0-d115-4469-8438-9387a27a5aa0",
                     "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
