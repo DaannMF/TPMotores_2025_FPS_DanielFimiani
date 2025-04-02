@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(DronInputs))]
 
@@ -12,7 +13,14 @@ public class DronController : BaseRigidBody {
     [SerializeField] private float verticalAimPower = 2f;
     [SerializeField] private float lerpSpeed = 2;
     [SerializeField] private float verticalLerpSpeed = 0.1f;
+
+    [Header("Shooting Properties")]
     [SerializeField] private Transform targetLook;
+    [SerializeField] private float maxRaycast = 999f;
+    [SerializeField] private LayerMask aimColliderLayerMask = new LayerMask();
+    [SerializeField] private Transform bulletProjectilePrefab;
+    [SerializeField] private Transform spawnBulletPosition;
+    [SerializeField] private GameObject laserPrefab;
 
     private DronInputs inputs;
     private List<IEngine> engines = new List<IEngine>();
@@ -21,14 +29,19 @@ public class DronController : BaseRigidBody {
     private float finalYaw;
     private float finalVerticalAim;
     private float yaw;
+    private Vector3 hitPoint;
+    private LineRenderer lr;
 
     private void Start() {
         inputs = GetComponent<DronInputs>();
         engines = new List<IEngine>(GetComponentsInChildren<IEngine>());
+        lr = Instantiate(laserPrefab, spawnBulletPosition.position, Quaternion.identity).GetComponent<LineRenderer>();
     }
 
     void Update() {
         HandleVerticalAim();
+        HandleLaser();
+        HandleShoot();
     }
 
     protected override void HandlePhysics() {
@@ -59,6 +72,9 @@ public class DronController : BaseRigidBody {
     protected virtual void HandleVerticalAim() {
         if (!targetLook) return;
 
+        if (inputs.Aim == 0) return;
+
+        // Calculate the vertical aim value based on the input
         float verticalAim = -inputs.Aim * verticalAimPower;
 
         // Clamp the vertical aim value to prevent excessive rotation
@@ -69,5 +85,20 @@ public class DronController : BaseRigidBody {
 
         // Rotate the targetLook object around its local X axis
         targetLook.rotation = Quaternion.Euler(finalVerticalAim, transform.rotation.eulerAngles.y, 0f);
+    }
+
+    protected virtual void HandleLaser() {
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if (Physics.Raycast(ray, out RaycastHit hit, maxRaycast, aimColliderLayerMask)) {
+            lr.SetPositions(new Vector3[] { spawnBulletPosition.position, hit.point });
+            hitPoint = hit.point;
+        }
+    }
+
+    protected virtual void HandleShoot() {
+        if (inputs.Shoot) {
+            Instantiate(bulletProjectilePrefab, spawnBulletPosition.position, Quaternion.LookRotation(hitPoint - spawnBulletPosition.position));
+            inputs.Shoot = false;
+        }
     }
 }
