@@ -60,7 +60,6 @@ public class DronController : BaseRigidBody {
         float roll = -inputs.Cyclic.x * minMaxRoll;
         yaw += inputs.Pedals * yawPower;
 
-        // Smoothly interpolate the pitch, roll, and yaw values
         finalPitch = Mathf.Lerp(finalPitch, pitch, Time.deltaTime * lerpSpeed);
         finalRoll = Mathf.Lerp(finalRoll, roll, Time.deltaTime * lerpSpeed);
         finalYaw = Mathf.Lerp(finalYaw, yaw, Time.deltaTime * lerpSpeed);
@@ -74,16 +73,10 @@ public class DronController : BaseRigidBody {
 
         if (inputs.Aim == 0) return;
 
-        // Calculate the vertical aim value based on the input
         float verticalAim = -inputs.Aim * verticalAimPower;
-
-        // Clamp the vertical aim value to prevent excessive rotation
         verticalAim = Mathf.Clamp(verticalAim, -20f, 40f);
-
-        // Smoothly interpolate the vertical aim value
         finalVerticalAim = Mathf.Lerp(finalVerticalAim, verticalAim, Time.deltaTime * verticalLerpSpeed);
 
-        // Rotate the targetLook object around its local X axis
         targetLook.rotation = Quaternion.Euler(finalVerticalAim, transform.rotation.eulerAngles.y, 0f);
     }
 
