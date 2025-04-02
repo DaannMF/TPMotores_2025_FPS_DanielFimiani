@@ -1,26 +1,22 @@
 using UnityEngine;
 
-public class CameraLock : MonoBehaviour
-{
+public class CameraLock : MonoBehaviour {
     //This script locks the camera target object attached to the player
     //to not til the camera when the player is moving WASD
-    //and still allows the camera to tilt when the player is moving the cursor
+    //and still allows the camera to move when the player is moving the cursor
 
     Quaternion initRotation;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         initRotation = transform.rotation;
     }
 
-    void Update()
-    {
+    void Update() {
         LockRotation();
     }
 
-    void LockRotation()
-    {
+    void LockRotation() {
         Vector3 parentRotation = transform.parent.eulerAngles;
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, parentRotation.y, initRotation.z); ;
     }

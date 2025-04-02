@@ -35,7 +35,7 @@ public class DronController : BaseRigidBody {
     private void Start() {
         inputs = GetComponent<DronInputs>();
         engines = new List<IEngine>(GetComponentsInChildren<IEngine>());
-        lr = Instantiate(laserPrefab, spawnBulletPosition.position, Quaternion.identity).GetComponent<LineRenderer>();
+        lr = Instantiate(laserPrefab, spawnBulletPosition.position, transform.rotation).GetComponent<LineRenderer>();
     }
 
     void Update() {

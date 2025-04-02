@@ -39,6 +39,7 @@ Ejercicio:
 
 Extras personanes
 
+- ✅ Agregar un cursor custom
 - Object Pool de balas
 - Object POol de enemigos
 - Scriptable Objects

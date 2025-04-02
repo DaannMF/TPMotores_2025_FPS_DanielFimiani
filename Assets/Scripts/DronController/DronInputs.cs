@@ -28,7 +28,6 @@ public class DronInputs : MonoBehaviour {
     }
 
     private void OnPedals(InputValue value) {
-        // Get the mouse position and normalize it to the range [-1, 1] in relation to the center of the screen
         Vector2 mousePos = value.Get<Vector2>();
         float normalizedX = (mousePos.x / Screen.width) * 2 - 1;
         float normalizedY = (mousePos.y / Screen.height) * 2 - 1;
