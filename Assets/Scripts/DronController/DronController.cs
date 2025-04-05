@@ -18,10 +18,10 @@ public class DronController : BaseRigidBody {
     [SerializeField] private Transform targetLook;
     [SerializeField] private float maxRaycast = 999f;
     [SerializeField] private LayerMask aimColliderLayerMask = new LayerMask();
-    [SerializeField] private Transform bulletProjectilePrefab;
     [SerializeField] private Transform spawnBulletPosition;
     [SerializeField] private GameObject laserPrefab;
 
+    private Health health;
     private DronInputs inputs;
     private List<IEngine> engines = new List<IEngine>();
     private float finalPitch;
@@ -36,12 +36,18 @@ public class DronController : BaseRigidBody {
         inputs = GetComponent<DronInputs>();
         engines = new List<IEngine>(GetComponentsInChildren<IEngine>());
         lr = Instantiate(laserPrefab, spawnBulletPosition.position, transform.rotation).GetComponent<LineRenderer>();
+        health = GetComponent<Health>();
     }
 
     void Update() {
         HandleVerticalAim();
         HandleLaser();
         HandleShoot();
+    }
+
+    void OnCollisionEnter(Collision collision) {
+        if (!health) return;
+        health.TakeCollisionDamage();
     }
 
     protected override void HandlePhysics() {
@@ -93,8 +99,13 @@ public class DronController : BaseRigidBody {
 
     protected virtual void HandleShoot() {
         if (inputs.Shoot) {
-            Instantiate(bulletProjectilePrefab, spawnBulletPosition.position, Quaternion.LookRotation(hitPoint - spawnBulletPosition.position));
-            inputs.Shoot = false;
+            GameObject projecticle = BulletPool.SharedInstance.GetPooledObject();
+            if (projecticle != null) {
+                projecticle.transform.position = spawnBulletPosition.position;
+                projecticle.transform.LookAt(hitPoint);
+                projecticle.SetActive(true);
+                inputs.Shoot = false;
+            }
         }
     }
 }
