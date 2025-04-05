@@ -30,9 +30,9 @@ Ejercicio:
   - ✅ Que posea una mira, láser o lo que sienta conveniente para ayudar al jugador a apuntar y
     pueda disparar con el click y calcular el punto de impacto con RayCast.
   - ✅ El jugador debe tener Vida y Daño.
-    - Pierde Vida si choca con cosas. (por ejemplo al chocar 3 veces que muera o que
+    - ✅ Pierde Vida si choca con cosas. (por ejemplo al chocar 3 veces que muera o que
     dependa de la velocidad del choque).
-    - Daña a los enemigos hasta matarlos.
+    - ✅ Daña a los enemigos hasta matarlos.
 - Que spawneen diferentes tipos de enemigos- Un Spawner de enemigos.
   - Que estos enemigos aparezcan y se muevan en alguna dirección.
   - Que puedan ser dañados y destruidos.
