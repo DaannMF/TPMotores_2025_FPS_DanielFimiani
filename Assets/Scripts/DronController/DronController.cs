@@ -10,9 +10,9 @@ public class DronController : BaseRigidBody {
     [SerializeField] private float minMaxPitch = 30f;
     [SerializeField] private float minMaxRoll = 30f;
     [SerializeField] private float yawPower = 2f;
-    [SerializeField] private float verticalAimPower = 2f;
+    [SerializeField] private float verticalAimPower = 30f;
     [SerializeField] private float lerpSpeed = 2;
-    [SerializeField] private float verticalLerpSpeed = 0.1f;
+    [SerializeField] private float verticalLerpSpeed = 1f;
 
     [Header("Shooting Properties")]
     [SerializeField] private Transform targetLook;
@@ -65,18 +65,21 @@ public class DronController : BaseRigidBody {
         finalYaw = Mathf.Lerp(finalYaw, yaw, Time.deltaTime * lerpSpeed);
 
         Quaternion rotation = Quaternion.Euler(finalPitch, finalYaw, finalRoll);
+
+        // Move the rb but not the camera target lock
         rb.MoveRotation(rotation);
     }
 
     protected virtual void HandleVerticalAim() {
         if (!targetLook) return;
 
-        if (inputs.Aim == 0) return;
+        if (inputs.Aim != 0) {
+            float verticalAim = -inputs.Aim * verticalAimPower;
+            verticalAim = Mathf.Clamp(verticalAim, -20f, 40f);
+            finalVerticalAim = Mathf.Lerp(finalVerticalAim, verticalAim, Time.deltaTime * verticalLerpSpeed);
+        }
 
-        float verticalAim = -inputs.Aim * verticalAimPower;
-        verticalAim = Mathf.Clamp(verticalAim, -20f, 40f);
-        finalVerticalAim = Mathf.Lerp(finalVerticalAim, verticalAim, Time.deltaTime * verticalLerpSpeed);
-
+        // Put outsude input to avoid the target to rotate when simulates the pithc
         targetLook.rotation = Quaternion.Euler(finalVerticalAim, transform.rotation.eulerAngles.y, 0f);
     }
 

@@ -8,6 +8,7 @@ public class DronEngine : MonoBehaviour, IEngine {
     [Header("Propeller properties")]
     [SerializeField] private Transform propeller;
     [SerializeField] private float propellerRotationSpeed = 300f;
+
     public void InitEngine() {
         throw new System.NotImplementedException();
     }
