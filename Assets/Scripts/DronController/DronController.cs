@@ -72,7 +72,6 @@ public class DronController : BaseRigidBody {
 
         Quaternion rotation = Quaternion.Euler(finalPitch, finalYaw, finalRoll);
 
-        // Move the rb but not the camera target lock
         rb.MoveRotation(rotation);
     }
 
@@ -85,7 +84,7 @@ public class DronController : BaseRigidBody {
             finalVerticalAim = Mathf.Lerp(finalVerticalAim, verticalAim, Time.deltaTime * verticalLerpSpeed);
         }
 
-        // Put outsude input to avoid the target to rotate when simulates the pithc
+        // Put outsude to avoid the target(child object) to rotate when simulates the pitch
         targetLook.rotation = Quaternion.Euler(finalVerticalAim, transform.rotation.eulerAngles.y, 0f);
     }
 
