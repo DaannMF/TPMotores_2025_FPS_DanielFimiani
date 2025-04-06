@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour {
     [SerializeField] private float speed = 10f;
     [SerializeField] private List<GameObject> bodies;
-    [SerializeField] private List<Transform> patrolPoints;
+    private GameObject[] patrolPoints;
 
     private Health health;
     private Vector3 currentTarget;
@@ -12,10 +12,12 @@ public class EnemyController : MonoBehaviour {
     void Awake() {
         health = GetComponent<Health>();
         if (health) health.Died += OnDeath;
+        patrolPoints = GameObject.FindGameObjectsWithTag("Waypoint");
     }
 
     void OnEnable() {
         PeekRandomBody();
+        PeekRandomWaypoint();
     }
 
     void Update() {
@@ -38,7 +40,7 @@ public class EnemyController : MonoBehaviour {
     }
 
     private void Patroll() {
-        if (patrolPoints.Count == 0) return;
+        if (patrolPoints.Length == 0) return;
 
         if (currentTarget == transform.position) PeekRandomWaypoint();
 
@@ -47,8 +49,8 @@ public class EnemyController : MonoBehaviour {
     }
 
     private void PeekRandomWaypoint() {
-        int waypointIndex = Random.Range(0, patrolPoints.Count);
-        currentTarget = patrolPoints[waypointIndex].position;
+        int waypointIndex = Random.Range(0, patrolPoints.Length);
+        currentTarget = patrolPoints[waypointIndex].transform.position;
     }
 
     private void OnDeath() {

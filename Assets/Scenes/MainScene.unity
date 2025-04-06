@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 319139129}
   m_Layer: 0
   m_Name: WayPoint_7
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -484,6 +484,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 886885047}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &362349540
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1993442093451472387, guid: a4c286654b5d14de9a09d9c31dd30fd4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.43555814
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993442093451472387, guid: a4c286654b5d14de9a09d9c31dd30fd4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00000011920929
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993442093451472387, guid: a4c286654b5d14de9a09d9c31dd30fd4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.9431858
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993442093451472387, guid: a4c286654b5d14de9a09d9c31dd30fd4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993442093451472387, guid: a4c286654b5d14de9a09d9c31dd30fd4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993442093451472387, guid: a4c286654b5d14de9a09d9c31dd30fd4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993442093451472387, guid: a4c286654b5d14de9a09d9c31dd30fd4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993442093451472387, guid: a4c286654b5d14de9a09d9c31dd30fd4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993442093451472387, guid: a4c286654b5d14de9a09d9c31dd30fd4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993442093451472387, guid: a4c286654b5d14de9a09d9c31dd30fd4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3069650296768879265, guid: a4c286654b5d14de9a09d9c31dd30fd4, type: 3}
+      propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a4c286654b5d14de9a09d9c31dd30fd4, type: 3}
 --- !u!1001 &400464878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -611,7 +668,7 @@ GameObject:
   - component: {fileID: 431752630}
   m_Layer: 0
   m_Name: WayPoint_4
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -647,7 +704,7 @@ GameObject:
   - component: {fileID: 506175455}
   m_Layer: 0
   m_Name: WayPoint_12
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1076,7 +1133,7 @@ GameObject:
   - component: {fileID: 733764416}
   m_Layer: 0
   m_Name: WayPoint_8
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1107,7 +1164,7 @@ GameObject:
   - component: {fileID: 793046030}
   m_Layer: 0
   m_Name: WayPoint_3
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1629,7 +1686,7 @@ GameObject:
   - component: {fileID: 1014005170}
   m_Layer: 0
   m_Name: WayPoint
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1660,7 +1717,7 @@ GameObject:
   - component: {fileID: 1167612187}
   m_Layer: 0
   m_Name: WayPoint_1
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1691,7 +1748,7 @@ GameObject:
   - component: {fileID: 1192391716}
   m_Layer: 0
   m_Name: WayPoint_11
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1859,7 +1916,7 @@ GameObject:
   - component: {fileID: 1328431697}
   m_Layer: 0
   m_Name: WayPoint_14
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2244,7 +2301,7 @@ GameObject:
   - component: {fileID: 1718108026}
   m_Layer: 0
   m_Name: WayPoint_2
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2350,7 +2407,7 @@ GameObject:
   - component: {fileID: 1772874940}
   m_Layer: 0
   m_Name: WayPoint_9
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2484,7 +2541,7 @@ GameObject:
   - component: {fileID: 1881404275}
   m_Layer: 0
   m_Name: WayPoint_6
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2515,7 +2572,7 @@ GameObject:
   - component: {fileID: 1903971041}
   m_Layer: 0
   m_Name: WayPoint_13
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2618,7 +2675,7 @@ GameObject:
   - component: {fileID: 1973786785}
   m_Layer: 0
   m_Name: WayPoint_15
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2709,7 +2766,7 @@ GameObject:
   - component: {fileID: 2048102996}
   m_Layer: 0
   m_Name: WayPoint_10
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2850,7 +2907,7 @@ GameObject:
   - component: {fileID: 2136707336}
   m_Layer: 0
   m_Name: WayPoint_5
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2986,3 +3043,4 @@ SceneRoots:
   - {fileID: 870187482}
   - {fileID: 712491312}
   - {fileID: 1993227276}
+  - {fileID: 362349540}

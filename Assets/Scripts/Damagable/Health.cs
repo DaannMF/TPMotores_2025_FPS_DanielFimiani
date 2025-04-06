@@ -22,6 +22,7 @@ public class Health : MonoBehaviour {
 
     private void OnEnable() {
         currentHealth = maxHealth;
+        HealthChanged?.Invoke(currentHealth, maxHealth);
         collisionDamage = maxHealth / maxCollision + 1f; // Adding 1 to handle float precision
         currentInvincibilityTime = invincibilityTime;
     }

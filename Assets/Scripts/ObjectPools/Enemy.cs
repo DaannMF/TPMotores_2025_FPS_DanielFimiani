@@ -1,17 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletPool : MonoBehaviour {
-    [SerializeField] private GameObject bulletPrefabs;
+public class EnemyPool : MonoBehaviour {
+    [SerializeField] private GameObject enemyPrefabs;
     [SerializeField] private short poolSize;
 
-    private List<GameObject> bulletPool;
-    private static BulletPool instance;
+    private List<GameObject> enemyPool;
+    private static EnemyPool instance;
 
-    public static BulletPool SharedInstance {
+    public static EnemyPool SharedInstance {
         get {
             if (instance == null) {
-                instance = FindObjectOfType<BulletPool>();
+                instance = FindObjectOfType<EnemyPool>();
             }
             return instance;
         }
@@ -22,27 +22,27 @@ public class BulletPool : MonoBehaviour {
     }
 
     private void LoadPool() {
-        bulletPool = new List<GameObject>(poolSize);
+        enemyPool = new List<GameObject>(poolSize);
         for (int i = 0; i < poolSize; i++) {
-            GameObject obstacle = Instantiate(bulletPrefabs);
+            GameObject obstacle = Instantiate(enemyPrefabs);
             obstacle.SetActive(false);
-            bulletPool.Add(obstacle);
+            enemyPool.Add(obstacle);
         }
     }
 
     public GameObject GetPooledObject() {
         for (int i = 0; i < poolSize; i++) {
-            if (!bulletPool[i].activeInHierarchy) {
-                return bulletPool[i];
+            if (!enemyPool[i].activeInHierarchy) {
+                return enemyPool[i];
             }
         }
         return null;
     }
 
     public void DeactivateInstances() {
-        if (bulletPool is not null) {
+        if (enemyPool is not null) {
             for (int i = 0; i < poolSize; i++) {
-                bulletPool[i].SetActive(false);
+                enemyPool[i].SetActive(false);
             }
         }
     }
