@@ -206,6 +206,7 @@ MonoBehaviour:
   bodies:
   - {fileID: 4354913407604374228}
   - {fileID: 8648435344308627505}
+  givenScore: 10
 --- !u!114 &7092640124549482062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a03ae8be0f6341ffaa336349a0f4c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 10
   maxCollision: 3
   invincibilityTime: 1
 --- !u!1 &4354913407604374228

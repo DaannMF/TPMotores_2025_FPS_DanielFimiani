@@ -37,12 +37,17 @@ public class DronController : BaseRigidBody {
         engines = new List<IEngine>(GetComponentsInChildren<IEngine>());
         lr = Instantiate(laserPrefab, spawnBulletPosition.position, transform.rotation).GetComponent<LineRenderer>();
         health = GetComponent<Health>();
+        health.Died += OnDeath;
     }
 
     void Update() {
         HandleVerticalAim();
         HandleLaser();
         HandleShoot();
+    }
+
+    private void OnDestroy() {
+        if (health) health.Died -= OnDeath;
     }
 
     void OnCollisionEnter(Collision collision) {
@@ -106,5 +111,9 @@ public class DronController : BaseRigidBody {
                 inputs.Shoot = false;
             }
         }
+    }
+
+    private void OnDeath() {
+        GameManager.SharedInstance.GameOver();
     }
 }

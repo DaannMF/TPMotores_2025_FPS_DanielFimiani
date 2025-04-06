@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour {
     [SerializeField] private float speed = 10f;
     [SerializeField] private List<GameObject> bodies;
+    [SerializeField] private short givenScore = 10;
     private GameObject[] patrolPoints;
 
     private Health health;
@@ -54,6 +55,7 @@ public class EnemyController : MonoBehaviour {
     }
 
     private void OnDeath() {
+        CharactersEvents.enemyDied?.Invoke(givenScore);
         gameObject.SetActive(false);
     }
 }
