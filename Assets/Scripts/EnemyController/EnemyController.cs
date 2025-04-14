@@ -50,6 +50,7 @@ public class EnemyController : MonoBehaviour {
     }
 
     private void PeekRandomWaypoint() {
+        if (patrolPoints.Length == 0) return;
         int waypointIndex = Random.Range(0, patrolPoints.Length);
         currentTarget = patrolPoints[waypointIndex].transform.position;
     }

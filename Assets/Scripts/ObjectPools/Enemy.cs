@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyPool : MonoBehaviour {
-    [SerializeField] private GameObject enemyPrefabs;
+    [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private short poolSize;
 
     private List<GameObject> enemyPool;
@@ -24,7 +24,7 @@ public class EnemyPool : MonoBehaviour {
     private void LoadPool() {
         enemyPool = new List<GameObject>(poolSize);
         for (int i = 0; i < poolSize; i++) {
-            GameObject obstacle = Instantiate(enemyPrefabs);
+            GameObject obstacle = Instantiate(enemyPrefab);
             obstacle.SetActive(false);
             enemyPool.Add(obstacle);
         }

@@ -15,6 +15,7 @@ public class DronController : BaseRigidBody {
     [SerializeField] private float verticalLerpSpeed = 1f;
 
     [Header("Shooting Properties")]
+    [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform targetLook;
     [SerializeField] private float maxRaycast = 999f;
     [SerializeField] private LayerMask aimColliderLayerMask = new LayerMask();
@@ -35,7 +36,7 @@ public class DronController : BaseRigidBody {
     private void Start() {
         inputs = GetComponent<DronInputs>();
         engines = new List<IEngine>(GetComponentsInChildren<IEngine>());
-        lr = Instantiate(laserPrefab, spawnBulletPosition.position, transform.rotation).GetComponent<LineRenderer>();
+        lr = Instantiate(laserPrefab, spawnBulletPosition.position, transform.rotation, gameObject.transform).GetComponent<LineRenderer>();
         health = GetComponent<Health>();
         health.Died += OnDeath;
     }
@@ -94,7 +95,7 @@ public class DronController : BaseRigidBody {
     }
 
     protected virtual void HandleLaser() {
-        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit hit, maxRaycast, aimColliderLayerMask)) {
             lr.SetPositions(new Vector3[] { spawnBulletPosition.position, hit.point });
             hitPoint = hit.point;
