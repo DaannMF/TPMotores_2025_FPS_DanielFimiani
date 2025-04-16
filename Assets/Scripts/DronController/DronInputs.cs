@@ -10,12 +10,14 @@ public class DronInputs : MonoBehaviour {
     private float pedals;
     private float aim;
     private bool shoot;
+    private bool turnLaser = true;
 
     public Vector2 Cyclic { get => cyclic; }
     public float Throttle { get => throttle; }
     public float Pedals { get => pedals; }
     public float Aim { get => aim; }
     public bool Shoot { get => shoot; set => shoot = value; }
+    public bool TurnLaser { get => turnLaser; }
 
     void Update() { }
 
@@ -37,5 +39,9 @@ public class DronInputs : MonoBehaviour {
 
     private void OnShoot(InputValue value) {
         shoot = value.isPressed;
+    }
+
+    private void OnTurnLaser(InputValue value) {
+        if (value.isPressed) turnLaser = !turnLaser;
     }
 }

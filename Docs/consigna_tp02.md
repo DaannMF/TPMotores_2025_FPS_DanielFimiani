@@ -22,7 +22,7 @@ suma de él mismo y éste.
 todas las direcciones.
 - ✅ Toda implementación de Object Pool debe ser propia y no utilizar la de Unity o cualquier otra librería.
 - ✅ El spawner de enemigos debe ser una Object Pool.
-- La mira láser o predicción de trayectoria se puede prender y apagar.
+- ✅ La mira láser o predicción de trayectoria se puede prender y apagar.
 - La cámara del jugador debe ser en 1ra y 3ra persona.
 
 ## Nuevas Características

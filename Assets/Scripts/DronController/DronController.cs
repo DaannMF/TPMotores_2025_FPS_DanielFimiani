@@ -95,6 +95,8 @@ public class DronController : BaseRigidBody {
     }
 
     protected virtual void HandleLaser() {
+        lr.enabled = inputs.TurnLaser;
+
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit hit, maxRaycast, aimColliderLayerMask)) {
             lr.SetPositions(new Vector3[] { spawnBulletPosition.position, hit.point });
@@ -108,6 +110,7 @@ public class DronController : BaseRigidBody {
             if (projecticle != null) {
                 projecticle.transform.position = spawnBulletPosition.position;
                 projecticle.transform.LookAt(hitPoint);
+                projecticle.GetComponent<BulletProjecticle>().SetTarget(hitPoint);
                 projecticle.SetActive(true);
                 inputs.Shoot = false;
             }

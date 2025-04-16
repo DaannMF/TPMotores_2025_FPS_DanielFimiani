@@ -7,13 +7,14 @@ public class BulletProjecticle : MonoBehaviour {
     public float Damage { get => damage; }
 
     private Rigidbody rb;
+    private Vector3 target;
 
-    private void Awake() {
+    void Awake() {
         rb = GetComponent<Rigidbody>();
     }
 
-    void OnEnable() {
-        rb.velocity = transform.forward * speed;
+    void Update() {
+        HandleMovement();
     }
 
     void OnTriggerEnter(Collider other) {
@@ -21,5 +22,13 @@ public class BulletProjecticle : MonoBehaviour {
         if (other.TryGetComponent(out Health health)) {
             health.TakeDamage(damage);
         }
+    }
+
+    public void SetTarget(Vector3 target) {
+        this.target = target;
+    }
+
+    private void HandleMovement() {
+        rb.MovePosition(Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime));
     }
 }
