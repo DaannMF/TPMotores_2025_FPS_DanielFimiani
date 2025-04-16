@@ -27,7 +27,7 @@ todas las direcciones.
 
 ## Nuevas Características
 
-- Crear un entorno completo (Un escenario completo) incluyendo modelos 3D sin primitivas de Unity.
+- ✅ Crear un entorno completo (Un escenario completo) incluyendo modelos 3D sin primitivas de Unity.
 - Los disparos deben ser un objeto 3D que se lance al objetivo. La trayectoria debe estar previamente
 calculada y el objeto debe seguir dicha trayectoria. (No lanzarlo con Físicas).
 - Integrar modelos humanoides con sus respectivas animaciones.

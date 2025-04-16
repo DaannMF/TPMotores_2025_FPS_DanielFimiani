@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class EnemySpawnController : MonoBehaviour {
+public class SpawnController : MonoBehaviour {
+    [SerializeField] private Transform[] waypoints;
     [SerializeField] private float spawnTime = 4f;
 
     private float spawnTimeCounter = 0f;
@@ -19,10 +20,10 @@ public class EnemySpawnController : MonoBehaviour {
     }
 
     private void Spawn() {
-        GameObject enemy = EnemyPool.SharedInstance.GetPooledObject();
-        if (enemy == null) return;
-
-        enemy.transform.position = transform.position;
-        enemy.SetActive(true);
+        GameObject character = EnemyPool.SharedInstance.GetPooledObject();
+        if (character == null) return;
+        character.GetComponent<CharacterConrtroller>().SetPatrollPoints(waypoints);
+        character.transform.position = waypoints[0].position;
+        character.SetActive(true);
     }
 }
