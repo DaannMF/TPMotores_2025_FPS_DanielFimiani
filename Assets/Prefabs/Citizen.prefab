@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 7910239335405650745}
   - component: {fileID: 7092640124549482062}
   m_Layer: 0
-  m_Name: Character
+  m_Name: Citizen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

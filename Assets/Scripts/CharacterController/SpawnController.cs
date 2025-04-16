@@ -2,23 +2,23 @@ using UnityEngine;
 
 public class SpawnController : MonoBehaviour {
     [SerializeField] private Transform[] waypoints;
-    [SerializeField] private float spawnTimeCiticen = 4f;
+    [SerializeField] private float spawnTimeCitizen = 4f;
     [SerializeField] private float spawnTimeEnemy = 4f;
 
-    private float spawnTimeCounterCiticen = 0f;
+    private float spawnTimeCounterCitizen = 0f;
     private float spawnTimeCounterEnemy = 0f;
 
     void Update() {
-        HandleSpawnCiticen();
+        HandleSpawnCitizen();
         HandleSpawnEnemy();
     }
 
-    private void HandleSpawnCiticen() {
-        spawnTimeCounterCiticen += Time.deltaTime;
+    private void HandleSpawnCitizen() {
+        spawnTimeCounterCitizen += Time.deltaTime;
 
-        if (spawnTimeCounterCiticen >= spawnTimeCiticen) {
-            SpawnCiticen();
-            spawnTimeCounterCiticen = 0f;
+        if (spawnTimeCounterCitizen >= spawnTimeCitizen) {
+            SpawnCitizen();
+            spawnTimeCounterCitizen = 0f;
         }
     }
 
@@ -31,12 +31,12 @@ public class SpawnController : MonoBehaviour {
         }
     }
 
-    private void SpawnCiticen() {
-        GameObject citicen = CharacterPool.SharedInstance.GetPooledCiticenObject();
-        if (citicen == null) return;
-        citicen.GetComponent<CharacterConrtroller>().SetPatrollPoints(waypoints);
-        citicen.transform.position = waypoints[0].position;
-        citicen.SetActive(true);
+    private void SpawnCitizen() {
+        GameObject citizen = CharacterPool.SharedInstance.GetPooledCitizenObject();
+        if (citizen == null) return;
+        citizen.GetComponent<CharacterConrtroller>().SetPatrollPoints(waypoints);
+        citizen.transform.position = waypoints[0].position;
+        citizen.SetActive(true);
     }
 
     private void SpawnEnemy() {

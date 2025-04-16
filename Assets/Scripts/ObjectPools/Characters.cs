@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class CharacterPool : MonoBehaviour {
     [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private GameObject citicenPrefab;
-    [SerializeField] private short citicenPoolSize;
+    [SerializeField] private GameObject citizenPrefab;
+    [SerializeField] private short citizenPoolSize;
     [SerializeField] private short enemyPoolSize;
 
     private List<GameObject> enemyPool;
-    private List<GameObject> citicenPool;
+    private List<GameObject> citizenPool;
     private static CharacterPool instance;
 
     public static CharacterPool SharedInstance {
@@ -21,16 +21,16 @@ public class CharacterPool : MonoBehaviour {
     }
 
     private void Start() {
-        LoadPoolCiticenPool();
+        LoadPoolCitizenPool();
         LoadPoolEnemyPool();
     }
 
-    private void LoadPoolCiticenPool() {
-        enemyPool = new List<GameObject>(citicenPoolSize);
-        for (int i = 0; i < citicenPoolSize; i++) {
-            GameObject citicen = Instantiate(citicenPrefab);
-            citicen.SetActive(false);
-            enemyPool.Add(citicen);
+    private void LoadPoolCitizenPool() {
+        enemyPool = new List<GameObject>(citizenPoolSize);
+        for (int i = 0; i < citizenPoolSize; i++) {
+            GameObject citizen = Instantiate(citizenPrefab);
+            citizen.SetActive(false);
+            enemyPool.Add(citizen);
         }
     }
 
@@ -43,8 +43,8 @@ public class CharacterPool : MonoBehaviour {
         }
     }
 
-    public GameObject GetPooledCiticenObject() {
-        for (int i = 0; i < citicenPoolSize; i++) {
+    public GameObject GetPooledCitizenObject() {
+        for (int i = 0; i < citizenPoolSize; i++) {
             if (!enemyPool[i].activeInHierarchy) {
                 return enemyPool[i];
             }
@@ -63,14 +63,14 @@ public class CharacterPool : MonoBehaviour {
 
     public void DeactivateInstances() {
         if (enemyPool is not null) {
-            for (int i = 0; i < citicenPoolSize; i++) {
+            for (int i = 0; i < citizenPoolSize; i++) {
                 enemyPool[i].SetActive(false);
             }
         }
 
-        if (citicenPool is not null) {
+        if (citizenPool is not null) {
             for (int i = 0; i < enemyPoolSize; i++) {
-                citicenPool[i].SetActive(false);
+                citizenPool[i].SetActive(false);
             }
         }
     }
