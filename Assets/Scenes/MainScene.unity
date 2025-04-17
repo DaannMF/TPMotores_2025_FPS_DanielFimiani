@@ -50028,13 +50028,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8597221872016334574, guid: 530bf99dbbcce408980de3f678df662a, type: 3}
-      propertyPath: enemyPrefab
-      value: 
-      objectReference: {fileID: 3069650296768879265, guid: 215499414140241e3ab965a35aadd96b, type: 3}
+      propertyPath: enemyPoolSize
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8597221872016334574, guid: 530bf99dbbcce408980de3f678df662a, type: 3}
-      propertyPath: citizenPrefab
-      value: 
-      objectReference: {fileID: 3069650296768879265, guid: a4c286654b5d14de9a09d9c31dd30fd4, type: 3}
+      propertyPath: citizenPoolSize
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

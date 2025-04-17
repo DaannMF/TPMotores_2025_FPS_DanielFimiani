@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8354944304590126798}
   - component: {fileID: 7627781387601962798}
-  - component: {fileID: 5044529284617695400}
-  - component: {fileID: 8597221872016334574}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -52,33 +50,3 @@ MonoBehaviour:
   onStatsChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5044529284617695400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 137685089379570596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba6937d57e03646ab8b8ffe0a427ec6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 6863857337172796869, guid: 9fc5deab5fef94d41b92a7112049f302, type: 3}
-  poolSize: 6
---- !u!114 &8597221872016334574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 137685089379570596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a6448dc1aca84f4582038d3392cbef5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 3069650296768879265, guid: 215499414140241e3ab965a35aadd96b, type: 3}
-  citizenPrefab: {fileID: 3069650296768879265, guid: a4c286654b5d14de9a09d9c31dd30fd4, type: 3}
-  citizenPoolSize: 6
-  enemyPoolSize: 6

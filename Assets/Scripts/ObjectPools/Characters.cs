@@ -28,7 +28,7 @@ public class CharacterPool : MonoBehaviour {
     private void LoadPoolCitizenPool() {
         citizenPool = new List<GameObject>(citizenPoolSize);
         for (int i = 0; i < citizenPoolSize; i++) {
-            GameObject citizen = Instantiate(citizenPrefab);
+            GameObject citizen = Instantiate(citizenPrefab, transform);
             citizen.SetActive(false);
             citizenPool.Add(citizen);
         }
@@ -37,7 +37,7 @@ public class CharacterPool : MonoBehaviour {
     private void LoadPoolEnemyPool() {
         enemyPool = new List<GameObject>(enemyPoolSize);
         for (int i = 0; i < enemyPoolSize; i++) {
-            GameObject enemy = Instantiate(enemyPrefab);
+            GameObject enemy = Instantiate(enemyPrefab, transform);
             enemy.SetActive(false);
             enemyPool.Add(enemy);
         }

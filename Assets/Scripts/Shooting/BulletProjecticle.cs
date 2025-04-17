@@ -3,6 +3,7 @@ using UnityEngine;
 public class BulletProjecticle : MonoBehaviour {
     [SerializeField] private float speed = 10f;
     [SerializeField] private float damage = 20f;
+    [SerializeField] private float lifeTime = 15f;
 
     public float Damage { get => damage; }
 
@@ -15,6 +16,7 @@ public class BulletProjecticle : MonoBehaviour {
 
     void Update() {
         HandleMovement();
+        HandleLifeTime();
     }
 
     void OnTriggerEnter(Collider other) {
@@ -30,5 +32,12 @@ public class BulletProjecticle : MonoBehaviour {
 
     private void HandleMovement() {
         rb.MovePosition(Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime));
+    }
+
+    private void HandleLifeTime() {
+        lifeTime -= Time.deltaTime;
+        if (lifeTime <= 0) {
+            gameObject.SetActive(false);
+        }
     }
 }
