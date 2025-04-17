@@ -1,10 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterConrtroller : MonoBehaviour {
     [SerializeField] private float speed = 10f;
-    [SerializeField] private List<GameObject> bodies;
-    [SerializeField] private short givenScore = 10;
+    [SerializeField] private int enemyScore = 10;
+    [SerializeField] private int citizenScore = 10;
     private Transform[] patrolPoints;
 
     private Health health;
@@ -17,7 +16,6 @@ public class CharacterConrtroller : MonoBehaviour {
     }
 
     void OnEnable() {
-        // PeekRandomBody();
         currentWaypointIndex = 0;
     }
 
@@ -31,17 +29,6 @@ public class CharacterConrtroller : MonoBehaviour {
 
     public void SetPatrollPoints(Transform[] points) {
         patrolPoints = points;
-    }
-
-    private void PeekRandomBody() {
-        if (bodies.Count == 0) return;
-
-        int bodyIndex = Random.Range(0, bodies.Count);
-        foreach (GameObject body in bodies) {
-            body.SetActive(false);
-        }
-
-        bodies[bodyIndex].SetActive(true);
     }
 
     private void Patroll() {
@@ -58,14 +45,17 @@ public class CharacterConrtroller : MonoBehaviour {
     private void PeekNextWaypoint() {
         if (patrolPoints == null || patrolPoints.Length == 0) return;
 
-        if (currentWaypointIndex >= patrolPoints.Length) currentWaypointIndex = 0;
+        if (currentWaypointIndex >= patrolPoints.Length - 1) currentWaypointIndex = 0;
         else currentWaypointIndex++;
 
         currentTarget = patrolPoints[currentWaypointIndex].position;
     }
 
     private void OnDeath() {
-        CharactersEvents.enemyDied?.Invoke(givenScore);
+        if (gameObject.CompareTag("Citizen")) CharactersEvents.citizenDied?.Invoke(citizenScore);
+
+        if (gameObject.CompareTag("Enemy")) CharactersEvents.enemyDied?.Invoke(enemyScore);
+
         gameObject.SetActive(false);
     }
 }

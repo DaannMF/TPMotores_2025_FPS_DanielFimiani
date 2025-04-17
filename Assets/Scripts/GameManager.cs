@@ -1,7 +1,9 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.TextCore.Text;
 
 public class GameManager : MonoBehaviour {
     [SerializeField] private Texture2D cursor;
@@ -12,11 +14,11 @@ public class GameManager : MonoBehaviour {
     private PlayerInput playerInput;
     private bool isPaused;
 
-    private short score;
-    public short Score {
+    private int score;
+    public int Score {
         get => score;
         set {
-            score = value;
+            score = value < 0 ? 0 : value;
             onStatsChanged?.Invoke();
         }
     }
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour {
         if (player) playerInput = player.GetComponent<PlayerInput>();
         if (playerInput) playerInput.ActivateInput();
         CharactersEvents.enemyDied += EnemyDefeated;
+        CharactersEvents.citizenDied += CitizenDefeated;
         PasueGame();
     }
 
@@ -53,6 +56,7 @@ public class GameManager : MonoBehaviour {
     private void OnDestroy() {
         onStatsChanged.RemoveAllListeners();
         CharactersEvents.enemyDied -= EnemyDefeated;
+        CharactersEvents.citizenDied -= CitizenDefeated;
     }
 
     private void HandleEscapeKey() {
@@ -76,9 +80,14 @@ public class GameManager : MonoBehaviour {
         mainMenu.SetActive(false);
     }
 
-    public void EnemyDefeated(short score) {
+    public void EnemyDefeated(int score) {
         Score += score;
     }
+
+    public void CitizenDefeated(int score) {
+        Score -= score;
+    }
+
 
     public void RestartGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

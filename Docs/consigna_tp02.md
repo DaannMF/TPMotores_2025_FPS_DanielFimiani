@@ -23,12 +23,12 @@ todas las direcciones.
 - ✅ Toda implementación de Object Pool debe ser propia y no utilizar la de Unity o cualquier otra librería.
 - ✅ El spawner de enemigos debe ser una Object Pool.
 - ✅ La mira láser o predicción de trayectoria se puede prender y apagar.
-- La cámara del jugador debe ser en 1ra y 3ra persona.
+- ✅ La cámara del jugador debe ser en 1ra y 3ra persona.
 
 ## Nuevas Características
 
 - ✅ Crear un entorno completo (Un escenario completo) incluyendo modelos 3D sin primitivas de Unity.
-- Los disparos deben ser un objeto 3D que se lance al objetivo. La trayectoria debe estar previamente
+- ✅ Los disparos deben ser un objeto 3D que se lance al objetivo. La trayectoria debe estar previamente
 calculada y el objeto debe seguir dicha trayectoria. (No lanzarlo con Físicas).
 - Integrar modelos humanoides con sus respectivas animaciones.
   - A partir de ahora llamaremos a estos NPC Ciudadanos, los cuales habrá Civiles y Enemigos.

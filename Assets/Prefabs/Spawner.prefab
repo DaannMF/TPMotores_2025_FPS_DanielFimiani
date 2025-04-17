@@ -147,7 +147,8 @@ MonoBehaviour:
   - {fileID: 3608488013813127715}
   - {fileID: 2641024934025793434}
   - {fileID: 8551843580550046589}
-  spawnTime: 3
+  spawnTimeCitizen: 6
+  spawnTimeEnemy: 15
 --- !u!1 &8152969282164415428
 GameObject:
   m_ObjectHideFlags: 0

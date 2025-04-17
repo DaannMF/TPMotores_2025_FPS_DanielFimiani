@@ -116,8 +116,8 @@ GameObject:
   - component: {fileID: 7910239335405650745}
   - component: {fileID: 7092640124549482062}
   m_Layer: 0
-  m_Name: Character 1
-  m_TagString: Untagged
+  m_Name: Citizen
+  m_TagString: Citizen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,9 +159,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2.05
+  m_Height: 4
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1.85, z: 0}
 --- !u!54 &6726849569541448661
 Rigidbody:
   m_ObjectHideFlags: 0

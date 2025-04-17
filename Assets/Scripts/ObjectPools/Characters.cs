@@ -26,11 +26,11 @@ public class CharacterPool : MonoBehaviour {
     }
 
     private void LoadPoolCitizenPool() {
-        enemyPool = new List<GameObject>(citizenPoolSize);
+        citizenPool = new List<GameObject>(citizenPoolSize);
         for (int i = 0; i < citizenPoolSize; i++) {
             GameObject citizen = Instantiate(citizenPrefab);
             citizen.SetActive(false);
-            enemyPool.Add(citizen);
+            citizenPool.Add(citizen);
         }
     }
 
@@ -45,8 +45,8 @@ public class CharacterPool : MonoBehaviour {
 
     public GameObject GetPooledCitizenObject() {
         for (int i = 0; i < citizenPoolSize; i++) {
-            if (!enemyPool[i].activeInHierarchy) {
-                return enemyPool[i];
+            if (!citizenPool[i].activeInHierarchy) {
+                return citizenPool[i];
             }
         }
         return null;
@@ -63,13 +63,13 @@ public class CharacterPool : MonoBehaviour {
 
     public void DeactivateInstances() {
         if (enemyPool is not null) {
-            for (int i = 0; i < citizenPoolSize; i++) {
+            for (int i = 0; i < enemyPoolSize; i++) {
                 enemyPool[i].SetActive(false);
             }
         }
 
         if (citizenPool is not null) {
-            for (int i = 0; i < enemyPoolSize; i++) {
+            for (int i = 0; i < citizenPoolSize; i++) {
                 citizenPool[i].SetActive(false);
             }
         }

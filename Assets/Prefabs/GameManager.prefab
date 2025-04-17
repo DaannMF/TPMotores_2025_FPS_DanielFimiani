@@ -78,5 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a6448dc1aca84f4582038d3392cbef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 3069650296768879265, guid: a4c286654b5d14de9a09d9c31dd30fd4, type: 3}
-  poolSize: 6
+  enemyPrefab: {fileID: 3069650296768879265, guid: 215499414140241e3ab965a35aadd96b, type: 3}
+  citizenPrefab: {fileID: 3069650296768879265, guid: a4c286654b5d14de9a09d9c31dd30fd4, type: 3}
+  citizenPoolSize: 6
+  enemyPoolSize: 6

@@ -116,8 +116,8 @@ GameObject:
   - component: {fileID: 7910239335405650745}
   - component: {fileID: 7092640124549482062}
   m_Layer: 0
-  m_Name: Citizen
-  m_TagString: Untagged
+  m_Name: Enemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,9 +159,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2.05
+  m_Height: 4
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1.86, z: 0}
 --- !u!54 &6726849569541448661
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -431,6 +431,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2049929814205202405, guid: 1d9c94f93a10f44cf859bcedcf730c92, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 830bd3600d49940a69b8507d17495e90, type: 2}
     - target: {fileID: 919132149155446097, guid: 1d9c94f93a10f44cf859bcedcf730c92, type: 3}
       propertyPath: m_Name
       value: characterMedium

@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class DronInputs : MonoBehaviour {
     [SerializeField] private float threshold = 0.2f;
+    [SerializeField] private GameObject firstPersonCamera;
+    [SerializeField] private GameObject thirdPersonCamera;
 
     private Vector2 cyclic;
     private float throttle;
@@ -43,5 +45,12 @@ public class DronInputs : MonoBehaviour {
 
     private void OnTurnLaser(InputValue value) {
         if (value.isPressed) turnLaser = !turnLaser;
+    }
+
+    private void OnCameraChange(InputValue value) {
+        if (value.isPressed) {
+            firstPersonCamera.SetActive(!firstPersonCamera.activeSelf);
+            thirdPersonCamera.SetActive(!thirdPersonCamera.activeSelf);
+        }
     }
 }
