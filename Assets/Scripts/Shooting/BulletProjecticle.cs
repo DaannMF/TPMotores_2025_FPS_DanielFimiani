@@ -9,9 +9,14 @@ public class BulletProjecticle : MonoBehaviour {
 
     private Rigidbody rb;
     private Vector3 target;
+    private float currentLifeTime;
 
     void Awake() {
         rb = GetComponent<Rigidbody>();
+    }
+
+    private void OnEnable() {
+        currentLifeTime = 0;
     }
 
     void Update() {
@@ -35,9 +40,7 @@ public class BulletProjecticle : MonoBehaviour {
     }
 
     private void HandleLifeTime() {
-        lifeTime -= Time.deltaTime;
-        if (lifeTime <= 0) {
-            gameObject.SetActive(false);
-        }
+        currentLifeTime += Time.deltaTime;
+        if (currentLifeTime >= lifeTime) gameObject.SetActive(false);
     }
 }

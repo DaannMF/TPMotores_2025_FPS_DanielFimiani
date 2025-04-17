@@ -202,10 +202,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  bodies:
-  - {fileID: 0}
-  - {fileID: 0}
-  givenScore: 10
+  enemyScore: 10
+  citizenScore: 10
 --- !u!114 &7092640124549482062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   maxCollision: 3
-  invincibilityTime: 1
+  invincibilityTime: 0.5
 --- !u!1001 &1041223394226662209
 PrefabInstance:
   m_ObjectHideFlags: 0
