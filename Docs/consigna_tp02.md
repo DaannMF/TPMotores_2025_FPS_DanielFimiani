@@ -30,8 +30,8 @@ todas las direcciones.
 - ✅ Crear un entorno completo (Un escenario completo) incluyendo modelos 3D sin primitivas de Unity.
 - ✅ Los disparos deben ser un objeto 3D que se lance al objetivo. La trayectoria debe estar previamente
 calculada y el objeto debe seguir dicha trayectoria. (No lanzarlo con Físicas).
-- Integrar modelos humanoides con sus respectivas animaciones.
+- ✅ Integrar modelos humanoides con sus respectivas animaciones.
   - ✅ A partir de ahora llamaremos a estos NPC Ciudadanos, los cuales habrá Civiles y Enemigos.
   - ✅ Si el jugador elimina enemigos recibirá una recompensa.
   - ✅ Si el jugador elimina civiles debe ser penalizado.
-  - Deben circular en el mapa utilizando FSM.
+  - ✅ Deben circular en el mapa utilizando FSM.

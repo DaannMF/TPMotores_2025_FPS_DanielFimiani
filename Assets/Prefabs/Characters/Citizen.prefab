@@ -158,10 +158,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 4
+  m_Radius: 0.6
+  m_Height: 3.9399066
   m_Direction: 1
-  m_Center: {x: 0, y: 1.85, z: 0}
+  m_Center: {x: 0, y: 1.9120053, z: 0}
 --- !u!54 &6726849569541448661
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -202,10 +202,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  bodies:
-  - {fileID: 0}
-  - {fileID: 0}
-  givenScore: 10
+  enemyScore: 10
+  citizenScore: 10
 --- !u!114 &7092640124549482062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,6 +433,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: characterMedium
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 1d9c94f93a10f44cf859bcedcf730c92, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fcbbc63b2a36c476eb2a170e109adfe6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
