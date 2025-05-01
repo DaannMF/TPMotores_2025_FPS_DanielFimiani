@@ -8969,6 +8969,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 2743093943069020770, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -52
+      objectReference: {fileID: 0}
     - target: {fileID: 4499412919432929572, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
       propertyPath: m_Pivot.x
       value: 0

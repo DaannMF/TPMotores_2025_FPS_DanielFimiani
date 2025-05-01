@@ -16,7 +16,7 @@ public class GameOverMenu : MonoBehaviour {
     }
 
     private void OnRestartButtonClicked() {
-        GameManager.SharedInstance.RestartGame();
+        GameManager.Instance.RestartGame();
     }
 
     private void OnExitButtonClicked() {

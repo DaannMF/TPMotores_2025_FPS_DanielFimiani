@@ -5,7 +5,7 @@ public class Score : MonoBehaviour {
     [SerializeField] private TMPro.TextMeshProUGUI scoreText;
 
     private void OnEnable() {
-        GameManager.SharedInstance.onStatsChanged.AddListener(UpdateScore);
+        GameManager.Instance.onStatsChanged.AddListener(UpdateScore);
     }
 
     private void Start() {
@@ -13,6 +13,6 @@ public class Score : MonoBehaviour {
     }
 
     private void UpdateScore() {
-        scoreText.text = $"Score: {GameManager.SharedInstance.Score.ToString("0000")}";
+        scoreText.text = $"Score: {GameManager.Instance.Score.ToString("0000")}";
     }
 }

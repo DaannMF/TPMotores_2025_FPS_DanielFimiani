@@ -118,6 +118,6 @@ public class DronController : BaseRigidBody {
     }
 
     private void OnDeath() {
-        GameManager.SharedInstance.GameOver();
+        GameManager.Instance.GameOver();
     }
 }

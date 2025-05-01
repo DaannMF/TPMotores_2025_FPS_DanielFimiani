@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour {
     }
 
     private void OnPlayButtonClicked() {
-        GameManager.SharedInstance.ResumeGame();
+        GameManager.Instance.ResumeGame();
         gameObject.SetActive(false);
     }
 

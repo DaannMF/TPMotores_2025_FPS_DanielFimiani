@@ -1,11 +1,9 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.TextCore.Text;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviourSingleton<GameManager> {
     [SerializeField] private Texture2D cursor;
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject gameOverMenu;
@@ -23,17 +21,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private static GameManager instance;
-    public static GameManager SharedInstance {
-        get {
-            if (instance == null) {
-                instance = FindObjectOfType<GameManager>();
-            }
-            return instance;
-        }
-    }
-
-    private void Awake() {
+    protected override void OnAwaken() {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player) playerInput = player.GetComponent<PlayerInput>();
         if (playerInput) playerInput.ActivateInput();
