@@ -9,7 +9,7 @@ suma de él mismo y éste.
 
 ## Modificaciones
 
-- Los Enemigos, Ciudadanos deben heredar de una clase base, por ejemplo “Person”/”Entity”/etc.
+- ✅ Los Enemigos, Ciudadanos deben heredar de una clase base, por ejemplo “Person”/”Entity”/etc.
 - Debe haber Pool de Enemigos, Ciudadanos, Balas y cualquier objeto que se genere en runtime.
 - Una vez generada una Pool, los objetos no deben destruirse entre escenas.
 
@@ -18,9 +18,9 @@ suma de él mismo y éste.
 - Crear una escena “MainMenu”. Mediante el botón “Jugar”, deberá cargar la escena “Gameplay”.
 - El jugador debe poder disparar 2 balas distintas. Estas balas deben ser distintas en comportamiento y
 visualización.
-- Utilizar interfaces. (IDamageable, IPickable, O cual crean necesario)
-- Utilizar clases abstractas para clases que no requieran una instancia. Por ejemplo “Person”.
-- Ya que de Person heredan Citizen y BaseEnemy.
+- ✅ Utilizar interfaces. (IDamageable, IPickable, O cual crean necesario)
+- ✅ Utilizar clases abstractas para clases que no requieran una instancia. Por ejemplo “Person”.
+- ✅ Ya que de Person heredan Citizen y BaseEnemy.
 
 ## Contenidos que se repasarán
 

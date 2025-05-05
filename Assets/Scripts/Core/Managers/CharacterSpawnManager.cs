@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SpawnController : MonoBehaviour {
+public class CharacterSpawnManager : MonoBehaviour {
     [SerializeField] private Transform[] waypoints;
     [SerializeField] private float spawnTimeCitizen = 4f;
     [SerializeField] private float spawnTimeEnemy = 4f;
@@ -32,18 +32,18 @@ public class SpawnController : MonoBehaviour {
     }
 
     private void SpawnCitizen() {
-        GameObject citizen = CharacterPool.SharedInstance.GetPooledCitizenObject();
+        Citizen citizen = PoolManager.Instance.Get<Citizen>();
         if (citizen == null) return;
         citizen.GetComponent<CharacterConrtroller>().SetPatrollPoints(waypoints);
         citizen.transform.position = waypoints[0].position;
-        citizen.SetActive(true);
+        citizen.gameObject.SetActive(true);
     }
 
     private void SpawnEnemy() {
-        GameObject enemy = CharacterPool.SharedInstance.GetPooledEnemyObject();
+        Enemy enemy = PoolManager.Instance.Get<Enemy>();
         if (enemy == null) return;
         enemy.GetComponent<CharacterConrtroller>().SetPatrollPoints(waypoints);
         enemy.transform.position = waypoints[0].position;
-        enemy.SetActive(true);
+        enemy.gameObject.SetActive(true);
     }
 }

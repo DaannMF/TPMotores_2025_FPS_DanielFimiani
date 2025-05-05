@@ -1,10 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(DronInputs))]
 
 public class DronController : BaseRigidBody {
+
+    [Header("Dron Properties")]
+    [SerializeField] private float maxHealth = 100f;
 
     [Header("Control Properties")]
     [SerializeField] private float minMaxPitch = 30f;
@@ -22,7 +26,9 @@ public class DronController : BaseRigidBody {
     [SerializeField] private Transform spawnBulletPosition;
     [SerializeField] private GameObject laserPrefab;
 
-    private Health health;
+    [Header("Evets")]
+    [SerializeField] private UnityEvent<float> onHealthChanged;
+
     private DronInputs inputs;
     private List<IEngine> engines = new List<IEngine>();
     private float finalPitch;
@@ -37,23 +43,12 @@ public class DronController : BaseRigidBody {
         inputs = GetComponent<DronInputs>();
         engines = new List<IEngine>(GetComponentsInChildren<IEngine>());
         lr = Instantiate(laserPrefab, spawnBulletPosition.position, transform.rotation, gameObject.transform).GetComponent<LineRenderer>();
-        health = GetComponent<Health>();
-        health.Died += OnDeath;
     }
 
     void Update() {
         HandleVerticalAim();
         HandleLaser();
         HandleShoot();
-    }
-
-    private void OnDestroy() {
-        if (health) health.Died -= OnDeath;
-    }
-
-    void OnCollisionEnter(Collision collision) {
-        if (!health) return;
-        health.TakeCollisionDamage();
     }
 
     protected override void HandlePhysics() {
@@ -90,7 +85,7 @@ public class DronController : BaseRigidBody {
             finalVerticalAim = Mathf.Lerp(finalVerticalAim, verticalAim, Time.deltaTime * verticalLerpSpeed);
         }
 
-        // Put outsude to avoid the target(child object) to rotate when simulates the pitch
+        // Put outsude to avoid the target(child object) rotate when simulates the pitch
         targetLook.rotation = Quaternion.Euler(finalVerticalAim, transform.rotation.eulerAngles.y, 0f);
     }
 
@@ -106,18 +101,14 @@ public class DronController : BaseRigidBody {
 
     protected virtual void HandleShoot() {
         if (inputs.Shoot) {
-            GameObject projecticle = BulletPool.SharedInstance.GetPooledObject();
+            BulletProjecticle projecticle = PoolManager.Instance.Get<BulletProjecticle>();
             if (projecticle != null) {
                 projecticle.transform.position = spawnBulletPosition.position;
                 projecticle.transform.LookAt(hitPoint);
                 projecticle.GetComponent<BulletProjecticle>().SetTarget(hitPoint);
-                projecticle.SetActive(true);
+                projecticle.gameObject.SetActive(true);
                 inputs.Shoot = false;
             }
         }
-    }
-
-    private void OnDeath() {
-        GameManager.Instance.GameOver();
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BulletProjecticle : MonoBehaviour {
+public class BulletProjecticle : MonoBehaviour, IPoolable {
     [SerializeField] private float speed = 10f;
     [SerializeField] private float damage = 20f;
     [SerializeField] private float lifeTime = 15f;
@@ -25,10 +25,9 @@ public class BulletProjecticle : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider other) {
-        gameObject.SetActive(false);
-        if (other.TryGetComponent(out Health health)) {
-            health.TakeDamage(damage);
-        }
+        ReturnToPool();
+        IDamageable damageable = other.GetComponent<IDamageable>();
+        damageable?.TakeDamage(damage);
     }
 
     public void SetTarget(Vector3 target) {
@@ -42,5 +41,9 @@ public class BulletProjecticle : MonoBehaviour {
     private void HandleLifeTime() {
         currentLifeTime += Time.deltaTime;
         if (currentLifeTime >= lifeTime) gameObject.SetActive(false);
+    }
+
+    public void ReturnToPool() {
+        PoolManager.Instance.ReturnToPool(this);
     }
 }

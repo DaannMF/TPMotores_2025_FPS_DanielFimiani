@@ -76,7 +76,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager> {
         Score -= score;
     }
 
-
     public void RestartGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         playerInput.ActivateInput();
@@ -86,5 +85,15 @@ public class GameManager : MonoBehaviourSingleton<GameManager> {
         Time.timeScale = 0;
         if (playerInput) playerInput.DeactivateInput();
         gameOverMenu.SetActive(true);
+    }
+
+    public void QuitGame() {
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        Debug.Log("Exiting game");
+#elif UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_STANDALONE
+            Application.Quit();
+#endif
     }
 }

@@ -1,22 +1,23 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour {
-    [SerializeField] private Health health;
+public class EnemyHealthBar : MonoBehaviour {
+    [SerializeField] private Character character;
+
     private Slider slider;
 
     void Awake() {
         slider = GetComponentInChildren<Slider>();
-        health.HealthChanged += UpdateHealthBar;
+        character.onHealthChanged += UpdateHealthBar;
     }
 
     void Start() {
-        slider.maxValue = health.MaxHealth;
-        slider.value = health.CurrenHealt;
+        slider.maxValue = character.MaxHealth;
+        slider.value = character.CurrentHealth;
     }
 
     void OnDestroy() {
-        health.HealthChanged -= UpdateHealthBar;
+        character.onHealthChanged -= UpdateHealthBar;
     }
 
     private void UpdateHealthBar(float currentHealth, float maxHealth) {

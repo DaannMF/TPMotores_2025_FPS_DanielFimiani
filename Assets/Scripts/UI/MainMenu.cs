@@ -22,14 +22,6 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void OnExitButtonClicked() {
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-        Debug.Log("Exiting game");
-#endif
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#elif UNITY_STANDALONE
-            Application.Quit();
-#endif
+        GameManager.Instance.QuitGame();
     }
-
 }

@@ -5,3 +5,4 @@ indent_size = 4
 
 [*.cs]
 csharp_new_line_before_open_brace=true
+dotnet_sort_system_directives_first = true
