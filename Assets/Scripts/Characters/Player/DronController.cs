@@ -6,10 +6,6 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(DronInputs))]
 
 public class DronController : BaseRigidBody {
-
-    [Header("Dron Properties")]
-    [SerializeField] private float maxHealth = 100f;
-
     [Header("Control Properties")]
     [SerializeField] private float minMaxPitch = 30f;
     [SerializeField] private float minMaxRoll = 30f;
@@ -22,7 +18,7 @@ public class DronController : BaseRigidBody {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform targetLook;
     [SerializeField] private float maxRaycast = 999f;
-    [SerializeField] private LayerMask aimColliderLayerMask = new LayerMask();
+    [SerializeField] private LayerMask aimColliderLayerMask = new();
     [SerializeField] private Transform spawnBulletPosition;
     [SerializeField] private GameObject laserPrefab;
 
@@ -30,7 +26,7 @@ public class DronController : BaseRigidBody {
     [SerializeField] private UnityEvent<float> onHealthChanged;
 
     private DronInputs inputs;
-    private List<IEngine> engines = new List<IEngine>();
+    private List<IEngine> engines = new();
     private float finalPitch;
     private float finalRoll;
     private float finalYaw;
@@ -101,14 +97,16 @@ public class DronController : BaseRigidBody {
 
     protected virtual void HandleShoot() {
         if (inputs.Shoot) {
-            BulletProjecticle projecticle = PoolManager.Instance.Get<BulletProjecticle>();
+            PiercingBullet projecticle = PoolManager.Instance.Get<PiercingBullet>();
             if (projecticle != null) {
                 projecticle.transform.position = spawnBulletPosition.position;
                 projecticle.transform.LookAt(hitPoint);
-                projecticle.GetComponent<BulletProjecticle>().SetTarget(hitPoint);
-                projecticle.gameObject.SetActive(true);
-                inputs.Shoot = false;
+                Vector3 direction = hitPoint - spawnBulletPosition.position;
+                projecticle.Fire(direction.normalized);
             }
+
         }
+
+        inputs.Shoot = false;
     }
 }

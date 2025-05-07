@@ -3,44 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PoolManager : MonoBehaviourSingleton<PoolManager> {
-    readonly Dictionary<Type, IPoolable> prefabas = new();
+    readonly Dictionary<Type, IPoolable> prefabs = new();
     readonly Dictionary<Type, Queue<IPoolable>> pools = new();
 
     public void InitializePool<T>(T prefab, int minSize = 10) where T : MonoBehaviour, IPoolable {
+        InitializePool(prefab, transform, minSize);
+    }
+
+    public void InitializePool<T>(T prefab, Transform transform, int minSize = 10) where T : MonoBehaviour, IPoolable {
         if (prefab == null) return;
 
-        bool hasPool = pools.TryGetValue(typeof(T), out Queue<IPoolable> pool);
-        if (!hasPool) {
-            pool = new Queue<IPoolable>();
-            pools.Add(typeof(T), pool);
-        }
+        if (!pools.ContainsKey(typeof(T)))
+            pools.Add(typeof(T), new Queue<IPoolable>());
 
-        prefabas.Add(typeof(T), prefab);
+        if (!prefabs.ContainsKey(typeof(T)))
+            prefabs.Add(typeof(T), prefab);
 
-        for (int i = 0; i < minSize; i++) {
-            var obj = GameObject.Instantiate(prefab);
-            obj.gameObject.SetActive(false);
-            pool.Enqueue(obj);
-        }
+        for (int i = 0; i < minSize; i++)
+            pools[typeof(T)].Enqueue(GameObject.Instantiate(prefab, transform));
     }
 
     public T Get<T>() where T : MonoBehaviour, IPoolable {
+        // If the object is already in the pool, return it
         bool hasPool = pools.TryGetValue(typeof(T), out Queue<IPoolable> pool);
         if (hasPool && pool.Count > 0)
             return (T)pool.Dequeue();
 
-        bool hasPrefab = prefabas.TryGetValue(typeof(T), out IPoolable prefab);
+        // If the object is not in the pool, instantiate a new one
+        // Check if the prefab exists in the prefabs dictionary
+        bool hasPrefab = prefabs.TryGetValue(typeof(T), out IPoolable prefab);
         if (hasPrefab) {
-            if (hasPool) pools.Add(typeof(T), new Queue<IPoolable>());
-
-            return GameObject.Instantiate((MonoBehaviour)prefab).GetComponent<T>();
+            if (!hasPool) pools.Add(typeof(T), new Queue<IPoolable>());
+            T obj = GameObject.Instantiate((MonoBehaviour)prefab).GetComponent<T>();
+            pools[typeof(T)].Enqueue(obj);
+            return obj;
         }
 
+        // If the prefab does not exist, log an error
+        Debug.LogError($"Prefab of type {typeof(T)} not found in the pool manager.");
         return null;
     }
 
     public void ReturnToPool<T>(T obj) where T : MonoBehaviour, IPoolable {
         if (obj == null) return;
+
+        obj.gameObject.SetActive(false);
 
         bool hasPool = pools.TryGetValue(typeof(T), out Queue<IPoolable> pool);
         if (!hasPool) {
@@ -49,6 +56,6 @@ public class PoolManager : MonoBehaviourSingleton<PoolManager> {
         }
 
         obj.gameObject.SetActive(false);
-        pool.Enqueue(obj);
+        pools[typeof(T)].Enqueue(obj);
     }
 }

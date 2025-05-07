@@ -90,10 +90,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager> {
     public void QuitGame() {
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log("Exiting game");
-#elif UNITY_EDITOR
+#endif
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_STANDALONE
-            Application.Quit();
+        Application.Quit();
 #endif
     }
 }

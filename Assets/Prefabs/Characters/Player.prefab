@@ -178,11 +178,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 493573477150684243}
-  - component: {fileID: 8737373505583759677}
   - component: {fileID: 7789566794212168710}
-  - component: {fileID: 654613643565382805}
   - component: {fileID: 4989352715598024857}
-  - component: {fileID: 1501178132574205333}
+  - component: {fileID: 5225282044710649634}
+  - component: {fileID: 8737373505583759677}
+  - component: {fileID: 654613643565382805}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -209,6 +209,64 @@ Transform:
   - {fileID: 4862988641827726888}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7789566794212168710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3955836564061759604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ee79f72128249c2b4508b33d561b94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  threshold: 0.2
+  firstPersonCamera: {fileID: 0}
+  thirdPersonCamera: {fileID: 0}
+--- !u!114 &4989352715598024857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3955836564061759604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a6e522f19384475b859ee82091f6db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+--- !u!114 &5225282044710649634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3955836564061759604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7951ce7e6fcb442cbff3f7f66ac3c24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weightInLbs: 1
+  minMaxPitch: 30
+  minMaxRoll: 30
+  yawPower: 2
+  verticalAimPower: 30
+  lerpSpeed: 2
+  verticalLerpSpeed: 1
+  mainCamera: {fileID: 0}
+  targetLook: {fileID: 4903990167184649192}
+  maxRaycast: 999
+  aimColliderLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  spawnBulletPosition: {fileID: 4862988641827726888}
+  laserPrefab: {fileID: 5900387968517637614, guid: 279c462be1303449393c72796c69840e, type: 3}
+  onHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8737373505583759677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,19 +297,6 @@ MonoBehaviour:
   m_DefaultActionMap: Drone
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &7789566794212168710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3955836564061759604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15ee79f72128249c2b4508b33d561b94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  threshold: 0.2
 --- !u!54 &654613643565382805
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -279,47 +324,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4989352715598024857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3955836564061759604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28a6e522f19384475b859ee82091f6db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weightInLbs: 1
-  minMaxPitch: 30
-  minMaxRoll: 30
-  yawPower: 1
-  verticalAimPower: 30
-  lerpSpeed: 2
-  verticalLerpSpeed: 1
-  targetLook: {fileID: 4903990167184649192}
-  maxRaycast: 999
-  aimColliderLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  spawnBulletPosition: {fileID: 4862988641827726888}
-  laserPrefab: {fileID: 5900387968517637614, guid: 279c462be1303449393c72796c69840e, type: 3}
---- !u!114 &1501178132574205333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3955836564061759604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a03ae8be0f6341ffaa336349a0f4c00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 90
-  maxCollision: 3
-  invincibilityTime: 2
 --- !u!1 &6745647130860162269
 GameObject:
   m_ObjectHideFlags: 0

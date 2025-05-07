@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyHealthBar : MonoBehaviour {
-    [SerializeField] private Character character;
+public class CharacterHealthBar : MonoBehaviour {
+    [SerializeField] private BaseCharacter character;
 
     private Slider slider;
 

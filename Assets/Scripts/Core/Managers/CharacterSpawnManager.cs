@@ -4,6 +4,8 @@ public class CharacterSpawnManager : MonoBehaviour {
     [SerializeField] private Transform[] waypoints;
     [SerializeField] private float spawnTimeCitizen = 4f;
     [SerializeField] private float spawnTimeEnemy = 4f;
+    [SerializeField] private int maxCitizens = 3;
+    [SerializeField] private int maxEnemies = 3;
 
     private float spawnTimeCounterCitizen = 0f;
     private float spawnTimeCounterEnemy = 0f;

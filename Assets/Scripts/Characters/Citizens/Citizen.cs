@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Citizen : Character, IPoolable {
+public class Citizen : BaseCharacter, IPoolable {
     [SerializeField] private int citizenScore = 10;
 
     public override void TakeDamage(float damage) {

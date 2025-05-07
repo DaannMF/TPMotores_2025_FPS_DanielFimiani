@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class CharacterConrtroller : MonoBehaviour {
-    private Character character;
+    private BaseCharacter character;
     private Transform[] patrolPoints;
     private Vector3 currentTarget;
     private int currentWaypointIndex = 0;
@@ -11,7 +11,7 @@ public class CharacterConrtroller : MonoBehaviour {
     }
 
     void Awake() {
-        character = GetComponent<Character>();
+        character = GetComponent<BaseCharacter>();
     }
 
     void Update() {
