@@ -8,7 +8,7 @@ public class CharacterHealthBar : MonoBehaviour {
 
     void Awake() {
         slider = GetComponentInChildren<Slider>();
-        character.onHealthChanged += UpdateHealthBar;
+        character.OnHealthChanged += UpdateHealthBar;
     }
 
     void Start() {
@@ -17,7 +17,7 @@ public class CharacterHealthBar : MonoBehaviour {
     }
 
     void OnDestroy() {
-        character.onHealthChanged -= UpdateHealthBar;
+        character.OnHealthChanged -= UpdateHealthBar;
     }
 
     private void UpdateHealthBar(float currentHealth, float maxHealth) {

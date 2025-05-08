@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Dron : MonoBehaviour, IDamageable {
     [SerializeField] private float maxHealth = 100f;
-
+    [SerializeField] private float invulnerabiltyTime = 1f;
     private float currentHealth;
 
     public event Action<float, float> onHealthChanged;
@@ -17,10 +17,30 @@ public class Dron : MonoBehaviour, IDamageable {
         }
     }
 
+    private float previusTime;
+
+    private void Start() {
+        CurrentHealth = maxHealth;
+    }
+
+    void OnCollisionEnter(Collision collision) {
+        TakeDamage(0);
+    }
+
     public void TakeDamage(float _) {
+        float currentTime = Time.time;
+
+        if (currentTime - previusTime < invulnerabiltyTime)
+            return;
+
+        previusTime = currentTime;
+
+        Debug.Log("Previous time: " + previusTime);
+        Debug.Log("Current time: " + currentTime);
+
         float collisionDamage = (maxHealth / 3) + 1;
-        currentHealth -= Mathf.Clamp(currentHealth - collisionDamage, 0, maxHealth);
-        if (currentHealth <= 0) OnDeath();
+        CurrentHealth = Mathf.Clamp(CurrentHealth - collisionDamage, 0, maxHealth);
+        if (CurrentHealth <= 0) OnDeath();
     }
 
     private void OnDeath() {

@@ -3,16 +3,8 @@ using UnityEngine;
 public class Citizen : BaseCharacter, IPoolable {
     [SerializeField] private int citizenScore = 10;
 
-    public override void TakeDamage(float damage) {
-        currentHealth -= damage;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-
-        if (currentHealth <= 0) OnDeath();
-    }
-
-    public void OnDeath() {
+    public override void OnDeath() {
         CharactersEvents.citizenDied?.Invoke(citizenScore);
-        gameObject.SetActive(false);
         ReturnToPool();
     }
 

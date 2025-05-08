@@ -19,8 +19,11 @@ public class PoolManager : MonoBehaviourSingleton<PoolManager> {
         if (!prefabs.ContainsKey(typeof(T)))
             prefabs.Add(typeof(T), prefab);
 
-        for (int i = 0; i < minSize; i++)
-            pools[typeof(T)].Enqueue(GameObject.Instantiate(prefab, transform));
+        for (int i = 0; i < minSize; i++) {
+            T obj = GameObject.Instantiate(prefab, transform);
+            obj.gameObject.SetActive(false);
+            pools[typeof(T)].Enqueue(obj);
+        }
     }
 
     public T Get<T>() where T : MonoBehaviour, IPoolable {
