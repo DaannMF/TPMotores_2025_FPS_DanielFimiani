@@ -10,7 +10,7 @@ public class CharacterPool : MonoBehaviour {
     [SerializeField] private Enemy enemyPrefab;
     [SerializeField] private int enemyPoolSize = 10;
 
-    void Awake() {
+    void Start() {
         PoolManager.Instance.InitializePool(citizenPrefab, transform, citizenPoolSize);
         PoolManager.Instance.InitializePool(enemyPrefab, transform, enemyPoolSize);
     }

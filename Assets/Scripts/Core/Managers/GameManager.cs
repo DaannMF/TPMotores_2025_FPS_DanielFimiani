@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviourSingleton<GameManager> {
     [SerializeField] private Texture2D cursor;
+    [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject gameOverMenu;
 
-    public UnityEvent onStatsChanged;
     private PlayerInput playerInput;
     private bool isPaused;
 
@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager> {
         get => score;
         set {
             score = value < 0 ? 0 : value;
-            onStatsChanged?.Invoke();
+            UIEvents.scoreChanged?.Invoke();
         }
     }
 
@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager> {
         if (playerInput) playerInput.ActivateInput();
         CharactersEvents.enemyDied += EnemyDefeated;
         CharactersEvents.citizenDied += CitizenDefeated;
-        PasueGame();
     }
 
     void Start() {
@@ -42,7 +41,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager> {
     }
 
     private void OnDestroy() {
-        onStatsChanged.RemoveAllListeners();
         CharactersEvents.enemyDied -= EnemyDefeated;
         CharactersEvents.citizenDied -= CitizenDefeated;
     }
@@ -58,6 +56,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager> {
         isPaused = true;
         Time.timeScale = 0;
         if (playerInput) playerInput.DeactivateInput();
+        pausePanel.SetActive(true);
         mainMenu.SetActive(true);
     }
 
@@ -65,6 +64,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager> {
         isPaused = false;
         Time.timeScale = 1;
         if (playerInput) playerInput.ActivateInput();
+        pausePanel.SetActive(false);
         mainMenu.SetActive(false);
     }
 

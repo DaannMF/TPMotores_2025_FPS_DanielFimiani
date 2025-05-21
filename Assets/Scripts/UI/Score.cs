@@ -4,12 +4,16 @@ public class Score : MonoBehaviour {
 
     [SerializeField] private TMPro.TextMeshProUGUI scoreText;
 
-    private void OnEnable() {
-        GameManager.Instance.onStatsChanged.AddListener(UpdateScore);
+    void Awake() {
+        UIEvents.scoreChanged += UpdateScore;
     }
 
     private void Start() {
         UpdateScore();
+    }
+
+    void OnDestroy() {
+        UIEvents.scoreChanged -= UpdateScore;
     }
 
     private void UpdateScore() {

@@ -10,8 +10,7 @@ public class BulletPool : MonoBehaviour {
     [SerializeField] private PiercingBullet piercingBulletPrefab;
     [SerializeField] private int piercingBulletPoolSize = 10;
 
-
-    void Awake() {
+    void Start() {
         PoolManager.Instance.InitializePool(explosiveBulletPrefab, transform, explosiveBulletPoolSize);
         PoolManager.Instance.InitializePool(piercingBulletPrefab, transform, piercingBulletPoolSize);
     }

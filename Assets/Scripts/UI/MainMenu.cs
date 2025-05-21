@@ -1,18 +1,22 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
 
-    [SerializeField] private Button playButton;
+    [SerializeField] private Button resumeButton;
     [SerializeField] private Button exitButton;
 
     void Awake() {
-        playButton.onClick.AddListener(OnPlayButtonClicked);
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+            resumeButton.gameObject.SetActive(false);
+
+        resumeButton.onClick.AddListener(OnPlayButtonClicked);
         exitButton.onClick.AddListener(OnExitButtonClicked);
     }
 
     void OnDestroy() {
-        playButton.onClick.RemoveListener(OnPlayButtonClicked);
+        resumeButton.onClick.RemoveListener(OnPlayButtonClicked);
         exitButton.onClick.RemoveListener(OnExitButtonClicked);
     }
 

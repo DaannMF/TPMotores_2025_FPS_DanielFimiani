@@ -35,9 +35,6 @@ public class Dron : MonoBehaviour, IDamageable {
 
         previusTime = currentTime;
 
-        Debug.Log("Previous time: " + previusTime);
-        Debug.Log("Current time: " + currentTime);
-
         float collisionDamage = (maxHealth / 3) + 1;
         CurrentHealth = Mathf.Clamp(CurrentHealth - collisionDamage, 0, maxHealth);
         if (CurrentHealth <= 0) OnDeath();

@@ -6,30 +6,27 @@ public abstract class MonoBehaviourSingleton<T> : MonoBehaviour where T : MonoBe
     private static T _instance;
     private static bool wasDestroyed;
 
-
     public static T Instance {
         get {
-            if (!_instance) {
+            if (_instance == null && !wasDestroyed) {
                 _instance = FindObjectOfType<T>();
-                if (!_instance && !wasDestroyed) {
+                if (_instance == null) {
                     _instance = new GameObject(typeof(T).Name).AddComponent<T>();
                 }
             }
-
             return _instance;
         }
     }
 
     private void Awake() {
-        if (_instance == this) {
+        if (_instance == null) {
+            _instance = (T)this;
             wasDestroyed = false;
             if (dontDestroyOnLoad)
                 DontDestroyOnLoad(gameObject);
-
             OnAwaken();
         }
-        else {
-            wasDestroyed = true;
+        else if (_instance != this) {
             Destroy(gameObject);
         }
     }
@@ -38,7 +35,6 @@ public abstract class MonoBehaviourSingleton<T> : MonoBehaviour where T : MonoBe
         if (_instance == this) {
             wasDestroyed = true;
             _instance = null;
-
             OnDestroyed();
         }
     }
