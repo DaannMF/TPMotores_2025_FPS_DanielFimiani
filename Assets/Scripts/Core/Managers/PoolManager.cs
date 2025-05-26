@@ -5,6 +5,7 @@ using UnityEngine;
 public class PoolManager : MonoBehaviourSingleton<PoolManager> {
     readonly Dictionary<Type, IPoolable> prefabs = new();
     readonly Dictionary<Type, Queue<IPoolable>> pools = new();
+    readonly List<IPoolable> activeInstances = new();
 
     public void InitializePool<T>(T prefab, int minSize = 10) where T : MonoBehaviour, IPoolable {
         InitializePool(prefab, transform, minSize);
@@ -29,8 +30,10 @@ public class PoolManager : MonoBehaviourSingleton<PoolManager> {
     public T Get<T>() where T : MonoBehaviour, IPoolable {
         // If the object is already in the pool, return it
         bool hasPool = pools.TryGetValue(typeof(T), out Queue<IPoolable> pool);
-        if (hasPool && pool.Count > 0)
+        if (hasPool && pool.Count > 0) {
+            activeInstances.Add(pool.Peek());
             return (T)pool.Dequeue();
+        }
 
         // If the object is not in the pool, instantiate a new one
         // Check if the prefab exists in the prefabs dictionary
@@ -38,7 +41,7 @@ public class PoolManager : MonoBehaviourSingleton<PoolManager> {
         if (hasPrefab) {
             if (!hasPool) pools.Add(typeof(T), new Queue<IPoolable>());
             T obj = GameObject.Instantiate((MonoBehaviour)prefab).GetComponent<T>();
-            pools[typeof(T)].Enqueue(obj);
+            activeInstances.Add(obj);
             return obj;
         }
 
@@ -60,5 +63,12 @@ public class PoolManager : MonoBehaviourSingleton<PoolManager> {
 
         obj.gameObject.SetActive(false);
         pools[typeof(T)].Enqueue(obj);
+    }
+
+    public void DeactivateAllInstances() {
+        foreach (var instance in activeInstances)
+            instance.ReturnToPool();
+
+        activeInstances.Clear();
     }
 }

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7bc2960c29534d6697d327f7781f02d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosiveBulletPrefab: {fileID: 1701207050315294560, guid: 9fc5deab5fef94d41b92a7112049f302, type: 3}
+  explosiveBulletPrefab: {fileID: 1336102649354409992, guid: da7e19a2ae8f54f9e8de42b2eef27221, type: 3}
   explosiveBulletPoolSize: 10
   piercingBulletPrefab: {fileID: -859961937864529661, guid: 5ef044f9c57844c3aba10d7b8ca597ef, type: 3}
   piercingBulletPoolSize: 10

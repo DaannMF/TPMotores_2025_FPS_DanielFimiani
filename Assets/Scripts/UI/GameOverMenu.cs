@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameOverMenu : MonoBehaviour {
@@ -8,6 +9,7 @@ public class GameOverMenu : MonoBehaviour {
     void Awake() {
         exitButton.onClick.AddListener(OnExitButtonClicked);
         restartButton.onClick.AddListener(OnRestartButtonClicked);
+        UIManager.Instance.HideGameplayUI();
     }
 
     void OnDestroy() {
@@ -16,7 +18,7 @@ public class GameOverMenu : MonoBehaviour {
     }
 
     private void OnRestartButtonClicked() {
-        GameManager.Instance.RestartGame();
+        SceneManager.Instance.LoadSceneAsync(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 
     private void OnExitButtonClicked() {

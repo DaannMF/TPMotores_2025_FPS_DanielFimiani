@@ -1,11 +1,17 @@
 using UnityEngine;
 
-public class PiercingBullet : BaseBullet, IPoolable {
+public class PiercingBullet : BaseProjectile, IPoolable {
     [SerializeField] private int hitsAmount = 3;
 
     private int currentHits = 0;
 
-    public override void Fire(Vector3 direction) {
+    public override void Fire(Vector3 spawnPosition, Vector3 hitPoint) {
+        transform.position = spawnPosition;
+        Vector3 direction = (hitPoint - spawnPosition).normalized;
+        transform.LookAt(hitPoint);
+        transform.rotation = Quaternion.LookRotation(direction);
+
+        currentHits = 0;
         gameObject.SetActive(true);
         rb.velocity = direction * speed;
     }

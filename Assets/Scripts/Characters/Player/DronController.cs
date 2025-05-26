@@ -39,6 +39,8 @@ public class DronController : BaseRigidBody {
         inputs = GetComponent<DronInputs>();
         engines = new List<IEngine>(GetComponentsInChildren<IEngine>());
         lr = Instantiate(laserPrefab, spawnBulletPosition.position, transform.rotation, gameObject.transform).GetComponent<LineRenderer>();
+        UIEvents.onBulletTypeChange?.Invoke("Normal");
+        inputs.IsBulletProjectile = true;
     }
 
     void Update() {
@@ -88,6 +90,8 @@ public class DronController : BaseRigidBody {
     protected virtual void HandleLaser() {
         lr.enabled = inputs.TurnLaser;
 
+        if (!lr.enabled) return;
+
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit hit, maxRaycast, aimColliderLayerMask)) {
             lr.SetPositions(new Vector3[] { spawnBulletPosition.position, hit.point });
@@ -97,14 +101,12 @@ public class DronController : BaseRigidBody {
 
     protected virtual void HandleShoot() {
         if (inputs.Shoot) {
-            PiercingBullet projecticle = PoolManager.Instance.Get<PiercingBullet>();
-            if (projecticle != null) {
-                projecticle.transform.position = spawnBulletPosition.position;
-                projecticle.transform.LookAt(hitPoint);
-                Vector3 direction = hitPoint - spawnBulletPosition.position;
-                projecticle.Fire(direction.normalized);
-            }
+            BaseProjectile projectile = inputs.IsBulletProjectile
+                ? PoolManager.Instance.Get<PiercingBullet>()
+                : PoolManager.Instance.Get<ExplosiveBullet>();
 
+            if (projectile)
+                projectile.Fire(spawnBulletPosition.position, hitPoint);
         }
 
         inputs.Shoot = false;

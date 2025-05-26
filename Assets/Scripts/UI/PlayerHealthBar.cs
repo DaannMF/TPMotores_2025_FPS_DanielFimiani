@@ -2,21 +2,27 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealtBar : MonoBehaviour {
-    [SerializeField] private Dron dron;
+    private Dron dron;
     private Slider slider;
 
     void Awake() {
         slider = GetComponentInChildren<Slider>();
-        dron.onHealthChanged += UpdateHealthBar;
     }
 
-    void Start() {
+    void OnEnable() {
+        dron = FindAnyObjectByType<Dron>();
+        if (!dron) {
+            Debug.LogWarning("Dron not found");
+            return;
+        }
+
+        dron.onHealthChanged += UpdateHealthBar;
         slider.maxValue = dron.MaxHealth;
         slider.value = dron.CurrentHealth;
     }
 
     void OnDestroy() {
-        dron.onHealthChanged -= UpdateHealthBar;
+        if (dron) dron.onHealthChanged -= UpdateHealthBar;
     }
 
     private void UpdateHealthBar(float currentHealth, float maxHealth) {

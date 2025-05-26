@@ -5,18 +5,18 @@ public class Score : MonoBehaviour {
     [SerializeField] private TMPro.TextMeshProUGUI scoreText;
 
     void Awake() {
-        UIEvents.scoreChanged += UpdateScore;
+        UIEvents.onScoreChanged += OnScoreChanged;
     }
 
     private void Start() {
-        UpdateScore();
+        OnScoreChanged();
     }
 
     void OnDestroy() {
-        UIEvents.scoreChanged -= UpdateScore;
+        UIEvents.onScoreChanged -= OnScoreChanged;
     }
 
-    private void UpdateScore() {
-        scoreText.text = $"Score: {GameManager.Instance.Score.ToString("0000")}";
+    private void OnScoreChanged() {
+        scoreText.text = $"Score: {GameManager.Instance.Score:0000}";
     }
 }

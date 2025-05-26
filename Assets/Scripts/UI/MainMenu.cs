@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour {
     [SerializeField] private Button exitButton;
 
     void Awake() {
-        if (SceneManager.GetActiveScene().name == "MainMenu")
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "MainMenu")
             resumeButton.gameObject.SetActive(false);
 
         resumeButton.onClick.AddListener(OnPlayButtonClicked);

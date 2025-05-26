@@ -13,6 +13,7 @@ public class DronInputs : MonoBehaviour {
     private float aim;
     private bool shoot;
     private bool turnLaser = true;
+    private bool isBulletProjectile = true;
 
     public Vector2 Cyclic { get => cyclic; }
     public float Throttle { get => throttle; }
@@ -20,6 +21,7 @@ public class DronInputs : MonoBehaviour {
     public float Aim { get => aim; }
     public bool Shoot { get => shoot; set => shoot = value; }
     public bool TurnLaser { get => turnLaser; }
+    public bool IsBulletProjectile { get => isBulletProjectile; set => isBulletProjectile = value; }
 
     void Update() { }
 
@@ -52,5 +54,10 @@ public class DronInputs : MonoBehaviour {
             firstPersonCamera.SetActive(!firstPersonCamera.activeSelf);
             thirdPersonCamera.SetActive(!thirdPersonCamera.activeSelf);
         }
+    }
+
+    private void OnProjectileChange(InputValue value) {
+        if (value.isPressed) isBulletProjectile = !isBulletProjectile;
+        UIEvents.onBulletTypeChange?.Invoke(isBulletProjectile ? "Normal" : "Rocket");
     }
 }
