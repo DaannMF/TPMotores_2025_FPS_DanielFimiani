@@ -26603,6 +26603,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 891073178}
     m_Modifications:
+    - target: {fileID: 3035836589049347490, guid: 333676a5ab5c74f7493669e76feeb586, type: 3}
+      propertyPath: spawnTimeEnemy
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035836589049347490, guid: 333676a5ab5c74f7493669e76feeb586, type: 3}
+      propertyPath: spawnTimeCitizen
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5729699081202434910, guid: 333676a5ab5c74f7493669e76feeb586, type: 3}
       propertyPath: m_Name
       value: Spawner_2
@@ -29241,6 +29249,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 891073178}
     m_Modifications:
+    - target: {fileID: 3035836589049347490, guid: 333676a5ab5c74f7493669e76feeb586, type: 3}
+      propertyPath: spawnTimeEnemy
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035836589049347490, guid: 333676a5ab5c74f7493669e76feeb586, type: 3}
+      propertyPath: spawnTimeCitizen
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5729699081202434910, guid: 333676a5ab5c74f7493669e76feeb586, type: 3}
       propertyPath: m_Name
       value: Spawner_1
@@ -35152,6 +35168,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 891073178}
     m_Modifications:
+    - target: {fileID: 3035836589049347490, guid: 333676a5ab5c74f7493669e76feeb586, type: 3}
+      propertyPath: spawnTimeEnemy
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035836589049347490, guid: 333676a5ab5c74f7493669e76feeb586, type: 3}
+      propertyPath: spawnTimeCitizen
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5729699081202434910, guid: 333676a5ab5c74f7493669e76feeb586, type: 3}
       propertyPath: m_Name
       value: Spawner_3
@@ -39769,6 +39793,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 891073178}
     m_Modifications:
+    - target: {fileID: 3035836589049347490, guid: 333676a5ab5c74f7493669e76feeb586, type: 3}
+      propertyPath: spawnTimeEnemy
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035836589049347490, guid: 333676a5ab5c74f7493669e76feeb586, type: 3}
+      propertyPath: spawnTimeCitizen
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5729699081202434910, guid: 333676a5ab5c74f7493669e76feeb586, type: 3}
       propertyPath: m_Name
       value: Spawner

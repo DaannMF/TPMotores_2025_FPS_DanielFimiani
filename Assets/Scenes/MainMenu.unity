@@ -203,6 +203,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2270729238157202372, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2270729238157202372, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2270729238157202372, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2270729238157202372, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2789285019843629842, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -256,6 +272,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3267974315254284627, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3401561333083026151, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3401561333083026151, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3401561333083026151, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3401561333083026151, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -391,6 +423,22 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 4997072912073919343, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4997072912073919343, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4997072912073919343, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4997072912073919343, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5104256094593592044, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -404,6 +452,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5104256094593592044, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5119781784917000738, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5119781784917000738, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5119781784917000738, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5119781784917000738, guid: 6d39fa4cd54f14aab97d792b36c40358, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -1043,7 +1107,7 @@ GameObject:
   - component: {fileID: 1015789058}
   - component: {fileID: 1015789057}
   m_Layer: 0
-  m_Name: LevelManager
+  m_Name: SceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

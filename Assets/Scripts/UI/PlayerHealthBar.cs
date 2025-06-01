@@ -16,13 +16,13 @@ public class PlayerHealtBar : MonoBehaviour {
             return;
         }
 
-        dron.onHealthChanged += UpdateHealthBar;
+        dron.OnHealthChanged += UpdateHealthBar;
         slider.maxValue = dron.MaxHealth;
         slider.value = dron.CurrentHealth;
     }
 
     void OnDestroy() {
-        if (dron) dron.onHealthChanged -= UpdateHealthBar;
+        if (dron) dron.OnHealthChanged -= UpdateHealthBar;
     }
 
     private void UpdateHealthBar(float currentHealth, float maxHealth) {

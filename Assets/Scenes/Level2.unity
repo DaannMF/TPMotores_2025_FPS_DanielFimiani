@@ -15971,6 +15971,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -69.4
       objectReference: {fileID: 0}
+    - target: {fileID: 3035836589049347490, guid: 333676a5ab5c74f7493669e76feeb586, type: 3}
+      propertyPath: spawnTimeEnemy
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035836589049347490, guid: 333676a5ab5c74f7493669e76feeb586, type: 3}
+      propertyPath: spawnTimeCitizen
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3608488013813127715, guid: 333676a5ab5c74f7493669e76feeb586, type: 3}
       propertyPath: m_LocalPosition.x
       value: 49.4
@@ -21216,6 +21224,14 @@ PrefabInstance:
     - target: {fileID: 2641024934025793434, guid: 333676a5ab5c74f7493669e76feeb586, type: 3}
       propertyPath: m_LocalPosition.z
       value: -68.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035836589049347490, guid: 333676a5ab5c74f7493669e76feeb586, type: 3}
+      propertyPath: spawnTimeEnemy
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035836589049347490, guid: 333676a5ab5c74f7493669e76feeb586, type: 3}
+      propertyPath: spawnTimeCitizen
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3608488013813127715, guid: 333676a5ab5c74f7493669e76feeb586, type: 3}
       propertyPath: m_LocalPosition.x

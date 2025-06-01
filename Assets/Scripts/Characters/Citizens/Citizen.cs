@@ -4,7 +4,7 @@ public class Citizen : BaseCharacter, IPoolable {
     [SerializeField] private int citizenScore = 10;
 
     public override void OnDeath() {
-        CharactersEvents.citizenDied?.Invoke(citizenScore);
+        GameEvents.OnCitizenDied?.Invoke(citizenScore);
         ReturnToPool();
     }
 

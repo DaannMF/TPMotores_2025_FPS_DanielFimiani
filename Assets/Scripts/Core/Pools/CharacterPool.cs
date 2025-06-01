@@ -1,7 +1,6 @@
 using UnityEngine;
 
 public class CharacterPool : MonoBehaviour {
-
     [Header("Citizen pool settings")]
     [SerializeField] private Citizen citizenPrefab;
     [SerializeField] private int citizenPoolSize = 10;

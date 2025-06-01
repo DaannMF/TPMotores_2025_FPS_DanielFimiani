@@ -6,14 +6,14 @@ public class Dron : MonoBehaviour, IDamageable {
     [SerializeField] private float invulnerabiltyTime = 1f;
     private float currentHealth;
 
-    public event Action<float, float> onHealthChanged;
+    public event Action<float, float> OnHealthChanged;
 
     public float MaxHealth { get => maxHealth; }
     public float CurrentHealth {
         get => currentHealth;
         set {
             currentHealth = value;
-            onHealthChanged?.Invoke(currentHealth, maxHealth);
+            OnHealthChanged?.Invoke(currentHealth, maxHealth);
         }
     }
 

@@ -1,7 +1,6 @@
 using UnityEngine;
 
 public class BulletPool : MonoBehaviour {
-
     [Header("Explosive bullet pool settings")]
     [SerializeField] private ExplosiveBullet explosiveBulletPrefab;
     [SerializeField] private int explosiveBulletPoolSize = 10;

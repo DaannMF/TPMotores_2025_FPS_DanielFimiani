@@ -58,6 +58,6 @@ public class DronInputs : MonoBehaviour {
 
     private void OnProjectileChange(InputValue value) {
         if (value.isPressed) isBulletProjectile = !isBulletProjectile;
-        UIEvents.onBulletTypeChange?.Invoke(isBulletProjectile ? "Normal" : "Rocket");
+        UIEvents.OnBulletTypeChange?.Invoke(isBulletProjectile ? "Normal" : "Rocket");
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(DronInputs))]
-
 public class DronController : BaseRigidBody {
     [Header("Control Properties")]
     [SerializeField] private float minMaxPitch = 30f;
@@ -39,7 +38,7 @@ public class DronController : BaseRigidBody {
         inputs = GetComponent<DronInputs>();
         engines = new List<IEngine>(GetComponentsInChildren<IEngine>());
         lr = Instantiate(laserPrefab, spawnBulletPosition.position, transform.rotation, gameObject.transform).GetComponent<LineRenderer>();
-        UIEvents.onBulletTypeChange?.Invoke("Normal");
+        UIEvents.OnBulletTypeChange?.Invoke("Normal");
         inputs.IsBulletProjectile = true;
     }
 

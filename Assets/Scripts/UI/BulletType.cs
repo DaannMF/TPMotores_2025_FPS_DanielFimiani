@@ -2,11 +2,10 @@ using System;
 using UnityEngine;
 
 public class BulletType : MonoBehaviour {
-
     [SerializeField] private TMPro.TextMeshProUGUI bulletTypeText;
 
     void Awake() {
-        UIEvents.onBulletTypeChange += OnBulletTypeChanges;
+        UIEvents.OnBulletTypeChange += OnBulletTypeChanges;
     }
 
     private void Start() {
@@ -14,7 +13,7 @@ public class BulletType : MonoBehaviour {
     }
 
     void OnDestroy() {
-        UIEvents.onBulletTypeChange -= OnBulletTypeChanges;
+        UIEvents.OnBulletTypeChange -= OnBulletTypeChanges;
     }
 
     private void OnBulletTypeChanges(String bulletType) {

@@ -1,22 +1,17 @@
 using UnityEngine;
 
 public class Score : MonoBehaviour {
-
     [SerializeField] private TMPro.TextMeshProUGUI scoreText;
 
     void Awake() {
-        UIEvents.onScoreChanged += OnScoreChanged;
-    }
-
-    private void Start() {
-        OnScoreChanged();
+        UIEvents.OnScoreChanged += OnScoreChanged;
     }
 
     void OnDestroy() {
-        UIEvents.onScoreChanged -= OnScoreChanged;
+        UIEvents.OnScoreChanged -= OnScoreChanged;
     }
 
-    private void OnScoreChanged() {
-        scoreText.text = $"Score: {GameManager.Instance.Score:0000}";
+    private void OnScoreChanged(int score) {
+        scoreText.text = $"Score: {score:0000}";
     }
 }

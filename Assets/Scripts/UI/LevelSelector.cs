@@ -1,7 +1,6 @@
 using UnityEngine;
 
 public class LevelSelector : MonoBehaviour {
-
     public void OnLevelButtonClicked(int level) {
         GameManager.Instance.RestartGame();
 

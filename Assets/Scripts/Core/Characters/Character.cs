@@ -21,6 +21,10 @@ public abstract class BaseCharacter : MonoBehaviour, IDamageable {
 
     public float Speed => speed;
 
+    private void OnEnable() {
+        CurrentHealth = maxHealth;
+    }
+
     public virtual void TakeDamage(float damage) {
         CurrentHealth -= damage;
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, maxHealth);

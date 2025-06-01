@@ -4,7 +4,7 @@ public class Enemy : BaseCharacter, IPoolable {
     [SerializeField] private int enemyScore = 10;
 
     public override void OnDeath() {
-        CharactersEvents.enemyDied?.Invoke(enemyScore);
+        GameEvents.OnEnemyDied?.Invoke(enemyScore);
         ReturnToPool();
     }
 

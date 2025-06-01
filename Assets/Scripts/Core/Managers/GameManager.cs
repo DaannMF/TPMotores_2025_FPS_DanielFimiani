@@ -1,30 +1,18 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviourSingleton<GameManager> {
     private PlayerInput playerInput;
-
-    private int score;
-    public int Score {
-        get => score;
-        set {
-            score = value < 0 ? 0 : value;
-            UIEvents.onScoreChanged?.Invoke();
-        }
-    }
 
     protected override void OnAwaken() {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player) playerInput = player.GetComponent<PlayerInput>();
         if (playerInput) playerInput.ActivateInput();
-        CharactersEvents.enemyDied += EnemyDefeated;
-        CharactersEvents.citizenDied += CitizenDefeated;
+        GameEvents.OnLevelCompleted += OnLevelCompleted;
     }
 
-    private void OnDestroy() {
-        CharactersEvents.enemyDied -= EnemyDefeated;
-        CharactersEvents.citizenDied -= CitizenDefeated;
+    protected override void OnDestroyed() {
+        GameEvents.OnLevelCompleted -= OnLevelCompleted;
     }
 
     public void PasueGame() {
@@ -39,16 +27,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager> {
         UIManager.Instance.HidePauseMenu();
     }
 
-    public void EnemyDefeated(int score) {
-        Score += score;
-    }
-
-    public void CitizenDefeated(int score) {
-        Score -= score;
-    }
-
     public void RestartGame() {
-        score = 0;
         ResumeGame();
     }
 
@@ -56,6 +35,12 @@ public class GameManager : MonoBehaviourSingleton<GameManager> {
         Time.timeScale = 0;
         if (playerInput) playerInput.DeactivateInput();
         UIManager.Instance.ShowGameOverMenu();
+    }
+
+    public void OnLevelCompleted() {
+        PasueGame();
+        if (playerInput) playerInput.DeactivateInput();
+        UIManager.Instance.ShowLevelCompletedMenu();
     }
 
     public void QuitGame() {

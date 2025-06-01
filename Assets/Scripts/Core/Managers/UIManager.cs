@@ -1,6 +1,7 @@
+using UnityEditor.SearchService;
 using UnityEngine;
 
-class UIManager : MonoBehaviourSingleton<UIManager> {
+public class UIManager : MonoBehaviourSingleton<UIManager> {
     [SerializeField] private Texture2D cursor;
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject pauseMenu;
@@ -31,6 +32,17 @@ class UIManager : MonoBehaviourSingleton<UIManager> {
 
     public void ShowGameplayUI() => gameplayUI.SetActive(true);
     public void HideGameplayUI() => gameplayUI.SetActive(false);
+
+    public void BackToMainMenu() {
+        SceneManager.Instance.LoadSceneAsync("MainMenu");
+    }
+
+    public void ShowLevelCompletedMenu() {
+        HideGameplayUI();
+        HideMainMenu();
+        HidePauseMenu();
+        gameOverMenu.SetActive(true);
+    }
 
     private void HandlePauseMenu() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
