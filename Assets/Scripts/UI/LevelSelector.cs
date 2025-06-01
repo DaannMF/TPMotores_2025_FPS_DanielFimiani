@@ -3,20 +3,23 @@ using UnityEngine;
 public class LevelSelector : MonoBehaviour {
     public void OnLevelButtonClicked(int level) {
         GameManager.Instance.RestartGame();
+        string sceneName;
 
         switch (level) {
             case 1:
-                SceneManager.Instance.LoadSceneAsync("Level1");
+                sceneName = "Level1";
                 break;
             case 2:
-                SceneManager.Instance.LoadSceneAsync("Level2");
+                sceneName = "Level2";
                 break;
             case 3:
-                SceneManager.Instance.LoadSceneAsync("Level3");
+                sceneName = "Level3";
                 break;
             default:
                 Debug.LogError("Invalid level selected");
-                break;
+                return;
         }
+
+        SceneManager.Instance.LoadScene(sceneName);
     }
 }

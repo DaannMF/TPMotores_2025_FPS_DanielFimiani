@@ -19,7 +19,8 @@ public class GameOverMenu : MonoBehaviour {
     }
 
     private void OnRestartButtonClicked() {
-        SceneManager.Instance.LoadSceneAsync(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        SceneManager.Instance.LoadScene(currentSceneName);
     }
 
     private void OnMainMenuButtonClicked() {

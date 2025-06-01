@@ -1,4 +1,3 @@
-using UnityEditor.SearchService;
 using UnityEngine;
 
 public class UIManager : MonoBehaviourSingleton<UIManager> {
@@ -34,7 +33,7 @@ public class UIManager : MonoBehaviourSingleton<UIManager> {
     public void HideGameplayUI() => gameplayUI.SetActive(false);
 
     public void BackToMainMenu() {
-        SceneManager.Instance.LoadSceneAsync("MainMenu");
+        SceneManager.Instance.LoadScene("MainMenu");
     }
 
     public void ShowLevelCompletedMenu() {

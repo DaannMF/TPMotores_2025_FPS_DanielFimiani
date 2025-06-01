@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,7 +7,11 @@ public class SceneManager : MonoBehaviourSingleton<SceneManager> {
     [SerializeField] private GameObject loadingScreen;
     [SerializeField] private Slider progressBar;
 
-    public async void LoadSceneAsync(string sceneName) {
+    public void LoadScene(string sceneName) {
+        StartCoroutine(LoadSceneAsync(sceneName));
+    }
+
+    private IEnumerator LoadSceneAsync(string sceneName) {
         // Load the scene asynchronously
         AsyncOperation asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
         UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
@@ -22,14 +26,14 @@ public class SceneManager : MonoBehaviourSingleton<SceneManager> {
         float elapsed = 0f;
 
         while (elapsed < fakeLoadTime) {
-            await Task.Delay(50);
+            yield return new WaitForSeconds(0.05f);
             elapsed += 0.05f;
             progressBar.value = Mathf.Lerp(0, 1, elapsed / fakeLoadTime);
         }
 
         // Esperar a que la escena esté lista realmente
         while (asyncLoad.progress < 0.9f) {
-            await Task.Delay(50);
+            yield return null;
         }
 
         asyncLoad.allowSceneActivation = true;
